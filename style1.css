@@ -1,0 +1,241 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: EUkraine;
+    src: url('app/fonts/E-Ukraine-Regular.woff2') format('woff2'),
+        url('app/fonts/E-Ukraine-Regular.woff') format('woff'),
+        url('E-Ukraine-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    background-color: #F6F5ED;
+    /* Light background color */
+    font-family: EUkraine, sans-serif;
+}
+
+.container {
+    padding: 20px;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+h1 {
+    font-size: 24px;
+    color: #000;
+    /* Black */
+}
+
+.document {
+    background: #FFFFFF;
+    /* White */
+    padding: 15px;
+    border: 1px solid #D0D0D0;
+    /* Light Gray */
+    border-radius: 8px;
+    margin-top: 10px;
+}
+
+.document p {
+    font-size: 14px;
+    padding-bottom: 10px;
+}
+
+h2 {
+    font-size: 20px;
+}
+
+.footer {
+    margin-top: 15px;
+}
+
+.footer p {
+    margin-bottom: 5px;
+    font-size: 14px;
+    /* Smaller font for footer text */
+}
+
+.personal-info {
+    margin-top: 10px;
+}
+
+.scan-button{
+    padding-top: 50px;
+    text-align: center;
+}
+
+
+
+.scan-button::before {
+    content: '';
+    background-image: url('qr.png');
+    /* Path to the checkmark image */
+    background-size: contain;
+    /* Adjust size to fit */
+    background-repeat: no-repeat;
+    /* Don't repeat the image */
+    width: 18px;
+    /* Adjust width as needed */
+    height: 18px;
+    /* Adjust height as needed */
+    position: absolute;
+    /* Position absolutely */
+    left: 80px;
+    /* Adjust to position the image */
+    top: 630px;
+    /* Align vertically with text */
+}
+
+.status {
+    margin-bottom: 20px;
+    position: relative;
+    margin-left: 25px;
+    margin-top: 20px;
+    /* Positioning context for the pseudo-element */
+}
+
+.status::before {
+    content: '';
+    background-image: url('checkbox.png');
+    /* Path to the checkmark image */
+    background-size: contain;
+    /* Adjust size to fit */
+    background-repeat: no-repeat;
+    /* Don't repeat the image */
+    width: 18px;
+    /* Adjust width as needed */
+    height: 18px;
+    /* Adjust height as needed */
+    position: absolute;
+    /* Position absolutely */
+    left: -25px;
+    /* Adjust to position the image */
+    top: 0;
+    /* Align vertically with text */
+}
+
+.document {
+    position: relative;
+    padding-top: 25px;
+    /* Positioning context for the pseudo-element */
+}
+
+.document::after {
+    content: '';
+    background-image: url('logo.png');
+    /* Path to the emblem image */
+    background-size: contain;
+    /* Adjust size to fit */
+    background-repeat: no-repeat;
+    /* Don't repeat the image */
+    width: 40px;
+    /* Adjust width as needed */
+    height: 40px;
+    /* Adjust height as needed */
+    position: absolute;
+    /* Position absolutely */
+    right: 15px;
+    /* Adjust to position the image */
+    top: 25px;
+    /* Adjust to position the image */
+}
+.textLogo{
+    padding-top: 30px;
+    padding-bottom: 20px;
+}
+.textLogo::after {
+    content: '+';
+    width: 20px;
+    /* Adjust width as needed */
+    height: 20px;
+    /* Adjust height as needed */
+    position: absolute;
+    /* Position absolutely */
+    left: 115px;
+    /* Adjust to position the image */
+    top: 47px;
+    /* Align vertically with text */
+    color: #FF8C00;
+}
+
+strong {
+    color: gray;
+}
+
+.wrap {
+   
+    overflow: hidden;
+    /* Hide overflow */
+    position: relative;
+    /* Positioning context for absolute elements */
+    height: 30px; 
+    left: -15px;
+    width: 348px;
+    /* Height of the marquee */
+}
+
+.items-wrap {
+    display: flex;
+    /* Allows elements to be in a row */
+    animation: scroll linear infinite;
+    /* Continuous scrolling animation */
+}
+
+.item {
+    white-space: nowrap;
+    /* Prevent line breaks */
+    flex: 0 0 auto;
+    /* Prevent items from shrinking */
+    background: #493219;
+    /* Dark background for items */
+    height: 55px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+    
+    color:#FFFFFF;
+    padding-left: 10px;
+    letter-spacing: 2px;
+    font-family: EUkraine, sans-serif;
+    padding-bottom: 15px;
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+        /* Start at the initial position */
+    }
+
+    100% {
+        transform: translateX(-100%);
+        /* Move left by 100% of the total width */
+    }
+}
+
+.dots {
+    width: 50px;
+    height: 50px;
+    font-size: 24px;
+    border: none;
+    border-radius: 50%;
+    background-color:#FF8C00;
+    cursor: pointer;
+    position: absolute;
+    left: 280px;
+    top: 400px;
+}
+
+a{
+    text-decoration: none;
+    color: #000;
+}
