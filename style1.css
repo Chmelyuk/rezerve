@@ -41,7 +41,7 @@ header {
 }
 
 .document p {
-    font-size: 12px;
+    font-size: 14px;
     padding-bottom: 10px;
 }
 
@@ -56,7 +56,7 @@ h2 {
 
 .footer p {
     margin-bottom: 5px;
-    font-size: 12px;
+    font-size: 14px;
     /* Smaller font for footer text */
 }
 
@@ -198,7 +198,7 @@ strong {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 12px;
+    font-size: 14px;
     
     color:#fcfdfd;
     padding-left: 10px;
