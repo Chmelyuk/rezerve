@@ -66,6 +66,8 @@ h2 {
 }
 .scan-button {
     padding-top: 20px;
+    padding-left: 33%;
+    
     text-align: left; /* Выровняем содержимое по левому краю */
     position: relative; /* Важно для псевдоэлемента */
     display: inline-flex; /* Для горизонтального расположения элементов */
