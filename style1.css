@@ -140,4 +140,24 @@ h2 {
     border-radius: 50%;
     background-color: #FF8C00;
     cursor: pointer;
-    position
+    position: relative; /* Important for positioning */
+}
+
+.wrap {
+    overflow: hidden; /* Обрезаем все, что выходит за границы */
+    white-space: nowrap; /* Отключаем перенос строк */
+    margin-top: 20px; /* Отступ сверху для wrap */
+}
+
+.items-wrap {
+    display: inline-flex; /* Используем flex для горизонтального расположения элементов */
+    will-change: transform; /* Указание для браузера, что будет анимация */
+}
+
+.item {
+    padding: 10px 15px; /* Увеличиваем отступы */
+    margin-right: 20px; /* Увеличиваем отступ между элементами */
+    background-color: #f0e7d3; /* Цвет фона элемента */
+    border-radius: 8px; /* Скругляем углы */
+    white-space: nowrap; /* Отключаем перенос строк внутри элемента */
+}
