@@ -29,11 +29,6 @@ header {
     align-items: center;
 }
 
-h1 {
-    font-size: 24px;
-    color: #000;
-    /* Black */
-}
 
 .document {
     background: #d5d3be;
@@ -46,12 +41,12 @@ h1 {
 }
 
 .document p {
-    font-size: 16px;
+    font-size: 12px;
     padding-bottom: 10px;
 }
 
 h2 {
-    font-size: 36px;
+    font-size: 28px;
     
 }
 
@@ -61,7 +56,7 @@ h2 {
 
 .footer p {
     margin-bottom: 5px;
-    font-size: 16px;
+    font-size: 12px;
     /* Smaller font for footer text */
 }
 
@@ -152,7 +147,7 @@ h2 {
 .textLogo{
     padding-top: 30px;
     padding-bottom: 20px;
-    font-size: 32px;
+    font-size: 24px;
 }
 .textLogo::after {
     content: '+';
@@ -203,7 +198,7 @@ strong {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 16px;
+    font-size: 12px;
     
     color:#fcfdfd;
     padding-left: 10px;
