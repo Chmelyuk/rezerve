@@ -7,59 +7,75 @@
     <title>Document</title>
     <link rel="stylesheet" href="style1.css">
     <link rel="manifest" href="manifest.json">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 </head>
 
 <body>
-    <div class="container">
-        <header>
-            <h1 class="textLogo">Резерв</h1>
-        </header>
+    <div class="flip-container" id="flip-container">
+        <div class="flipper">
+            <!-- Лицевая сторона -->
+            <div class="container">
+                <header>
+                    <h1 class="textLogo">Резерв</h1>
+                </header>
 
-        <div class="document">
-            <h2>Військово-</h2>
-            <h2>обліковий</h2>
-            <h2>документ</h2>
-            <p class="status">Дані уточнено вчасно</p>
-            <p><strong>Дата народження:</strong></p>
-            <p>16.04.1996</p>
+                <div class="document">
+                    <h2>Військово-</h2>
+                    <h2>обліковий</h2>
+                    <h2>документ</h2>
+                    <p class="status">Дані уточнено вчасно</p>
+                    <p><strong>Дата народження:</strong></p>
+                    <p>16.04.1996</p>
 
-            <p><strong>Відстрочка до:</strong></p>
-            <p>14.11.2024</p>
+                    <p><strong>Відстрочка до:</strong></p>
+                    <p>14.11.2024</p>
 
-            <!-- Переместили wrap внутрь document -->
-            <div class="wrap">
-                <div class="items-wrap">
-                    <div class="item">
-                        <p>На обліку • Документ оновлено о 16:34 | 17.10.2024</p>
+                    <div class="wrap">
+                        <div class="items-wrap">
+                            <div class="item">
+                                <p>На обліку • Документ оновлено о 16:34 | 17.10.2024</p>
+                            </div>
+                            <div class="item">
+                                <p>На обліку • Документ оновлено о 16:34 | 19.10.2024</p>
+                            </div>
+                            <div class="item">
+                                <p>На обліку • Документ оновлено о 16:34 | 19.10.2024</p>
+                            </div>
+                            <div class="item">
+                                <p>На обліку • Документ оновлено о 16:34 | 19.10.2024</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="item">
-                        <p>На обліку • Документ оновлено о 16:34 | 19.10.2024</p>
-                    </div>
-                    <div class="item">
-                        <p>На обліку • Документ оновлено о 16:34 | 19.10.2024</p>
-                    </div>
-                    <div class="item">
-                        <p>На обліку • Документ оновлено о 16:34 | 19.10.2024</p>
+                    <div class="footer">
+                        <div class="personal-info">
+                            <p><strong>Військовозобов'язаний:</strong></p>
+                            <h2>ЧМЕЛЮК</h2>
+                            <h2>Дмитро</h2>
+                            <h2>Васильович</h2>
+                        </div>
+                        <button class="dots">...</button>
                     </div>
                 </div>
+                <a href="javascript:void(0);" id="scan-button">
+                    <p class="scan-button">Сканувати документ</p>
+                </a>
             </div>
-            <div class="footer">
-                <div class="personal-info">
-                    <p><strong>Військовозобов'язаний:</strong></p>
-                     <h2>ЧМЕЛЮК</h2>
-                    <h2>Дмитро</h2>
-                   <h2>Васильович</h2>
+
+            <!-- Обратная сторона -->
+            <div class="back">
+                <div class="back-content">
+                    <img src="your-image.png" alt="Your Image" class="back-image"> <!-- Замените your-image.png на путь к вашей картинке -->
                 </div>
-                <button class="dots">...</button>
             </div>
         </div>
-        <a href="javascript:void(0);" id="scan-button">
-            <p class="scan-button">Сканувати документ</p>
-        </a>
     </div>
 
     <script>
+        const flipContainer = document.getElementById('flip-container');
+
+        flipContainer.addEventListener('click', () => {
+            flipContainer.classList.toggle('flip');
+        });
+
         const itemsWrap = document.querySelector('.items-wrap');
 
         // Клонируем элементы
@@ -77,8 +93,8 @@
         const totalWidth = itemWidth * itemsWrap.children.length; // Общая ширина элементов
         const animationDuration = (totalWidth / 50); // Устанавливаем скорость анимации, чем больше значение, тем медленнее
 
-        itemsWrap.style.width = ${totalWidth}px; // Устанавливаем ширину контейнера
-        itemsWrap.style.animationDuration = ${animationDuration}s; // Устанавливаем длительность анимации
+        itemsWrap.style.width = `${totalWidth}px`; // Устанавливаем ширину контейнера
+        itemsWrap.style.animationDuration = `${animationDuration}s`; // Устанавливаем длительность анимации
 
         // Функция для включения камеры
         async function startCamera() {
