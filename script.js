@@ -85,3 +85,22 @@ modal.addEventListener('click', (e) => {
         }, 300);
     }
 });
+
+function disableScroll() {
+    document.body.style.overflow = 'hidden';
+    document.body.style.position = 'fixed';
+    document.body.style.width = '100%';
+
+    // Предотвращаем прокрутку на сенсорных устройствах
+    window.addEventListener('touchmove', preventDefault, { passive: false });
+}
+
+let scrollPosition = 0;
+
+function disableScroll() {
+    scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+    document.body.style.overflow = 'hidden';
+    document.body.style.position = 'fixed';
+    document.body.style.top = `-${scrollPosition}px`;
+    document.body.style.width = '100%';
+}
