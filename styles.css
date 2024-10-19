@@ -5,6 +5,12 @@
     font-family: 'E Ukraine', sans-serif;
 }
 
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden; /* Запрещаем прокрутку */
+}
 @font-face {
     font-family: 'E Ukraine';
     src: url('app/fonts/E-Ukraine-Regular.woff2') format('woff2'),
@@ -23,6 +29,11 @@ body {
 
 .container {
     text-align: center;
+     display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
    
 
 }
