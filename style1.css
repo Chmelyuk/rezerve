@@ -170,7 +170,8 @@ strong {
 }
 
 .wrap {
-   
+   margin-top: 75px;
+    margin-bottom: 20px;
     overflow: hidden;
     /* Hide overflow */
     position: relative;
@@ -206,8 +207,7 @@ strong {
     letter-spacing: 2px;
     font-family: EUkraine, sans-serif;
     padding-bottom: 15px;
-    margin-top: 25px;
-margin-bottom: 25px;
+  
 }
 
 @keyframes scroll {
