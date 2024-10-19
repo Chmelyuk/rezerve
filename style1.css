@@ -64,32 +64,24 @@ h2 {
 .personal-info {
     margin-top: 10px;
 }
-
-.scan-button{
+.scan-button {
     padding-top: 20px;
     text-align: center;
+    position: relative; /* Это важно для позиционирования псевдоэлемента */
 }
-
-
 
 .scan-button::before {
     content: '';
     background-image: url('qr.png');
-    /* Path to the checkmark image */
     background-size: contain;
-    /* Adjust size to fit */
     background-repeat: no-repeat;
-    /* Don't repeat the image */
     width: 18px;
-    /* Adjust width as needed */
     height: 18px;
-    /* Adjust height as needed */
     position: absolute;
-    /* Position absolutely */
-    left: 90px;
-    /* Adjust to position the image */
-    top: 656px;
-    /* Align vertically with text */
+    left: 50%;
+    transform: translateX(-50%);
+    top: -24px; /* Располагаем QR-код сверху текста */
+    margin-top: 4px; /* Отступ в 4 пикселя от текста */
 }
 
 .status {
