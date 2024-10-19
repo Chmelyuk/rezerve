@@ -66,24 +66,20 @@ h2 {
 }
 .scan-button {
     padding-top: 20px;
-    text-align: center;
-    position: relative; /* Это важно для позиционирования псевдоэлемента */
+    text-align: left; /* Выровняем содержимое по левому краю */
+    position: relative; /* Важно для псевдоэлемента */
+    display: inline-flex; /* Для горизонтального расположения элементов */
+    align-items: center; /* Вертикальное выравнивание */
+    gap: 4px; /* Отступ в 4 пикселя между псевдоэлементом и текстом */
 }
-
 .scan-button::before {
     content: '';
     background-image: url('qr.png');
     background-size: contain;
     background-repeat: no-repeat;
-    width: 18px;
-    height: 18px;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    top: -24px; /* Располагаем QR-код сверху текста */
-    margin-top: 4px; /* Отступ в 4 пикселя от текста */
+    width: 18px; /* Ширина QR-кода */
+    height: 18px; /* Высота QR-кода */
 }
-
 .status {
     margin-bottom: 20px;
     position: relative;
