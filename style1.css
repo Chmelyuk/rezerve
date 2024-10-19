@@ -47,7 +47,7 @@ header {
 
 h2 {
     font-size: 28px;
-    font-weight: 400;
+    font-weight: 500;
     
 }
 
@@ -88,7 +88,7 @@ h2 {
     /* Position absolutely */
     left: 80px;
     /* Adjust to position the image */
-    top: 630px;
+    top: 700px;
     /* Align vertically with text */
 }
 
@@ -158,7 +158,7 @@ h2 {
     /* Adjust height as needed */
     position: absolute;
     /* Position absolutely */
-    left: 115px;
+    left: 110px;
     /* Adjust to position the image */
     top: 47px;
     /* Align vertically with text */
@@ -232,7 +232,7 @@ strong {
     cursor: pointer;
     position: absolute;
     left: 280px;
-    top: 400px;
+    top: 590px;
     color: #000;
     padding-bottom: 6px;
 }
