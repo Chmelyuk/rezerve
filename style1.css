@@ -206,6 +206,8 @@ strong {
     letter-spacing: 2px;
     font-family: EUkraine, sans-serif;
     padding-bottom: 15px;
+    margin-top: 25px;
+margin-bottom: 25px;
 }
 
 @keyframes scroll {
