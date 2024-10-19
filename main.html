@@ -3,11 +3,10 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>Document</title>
     <link rel="stylesheet" href="style1.css">
     <link rel="manifest" href="manifest.json">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 </head>
 
 <body>
@@ -45,6 +44,7 @@
                                 </div>
                             </div>
                         </div>
+                        
                         <div class="footer">
                             <div class="personal-info">
                                 <p><strong>Військовозобов'язаний:</strong></p>
@@ -52,10 +52,12 @@
                                 <h2>Дмитро</h2>
                                 <h2>Васильович</h2>
                             </div>
+
                             <button class="dots">...</button>
                         </div>
                     </div>
                 </div>
+
                 <div class="back">
                     <p class="qr-text">Код дійсний до 19.10.2025</p>
                     <img src="code.png" alt="QR Code" class="qr-code">
@@ -66,7 +68,16 @@
             <p class="scan-button">Сканувати документ</p>
         </a>
     </div>
-
+<div id="modal" class="modal">
+    <div class="modal-content">
+        <ul>
+            <li><a href="#">Повна інформація</a></li>
+            <li><a href="index.html">Завантажити PDF</a></li>
+            <li><a href="#">Оновити документ</a></li>
+            <li><a href="#">Виправити дані онлайн</a></li>
+        </ul>
+    </div>
+</div>
     <script src="script.js"></script>
 </body>
 
