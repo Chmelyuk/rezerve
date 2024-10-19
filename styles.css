@@ -86,7 +86,7 @@ button {
     background-color: #fff;
     cursor: pointer;
     color: #000;
-     font-weight: 600;
+     font-weight: 500;
     
 
 }
@@ -100,7 +100,7 @@ button:active {
 }
 
 button.empty {
-    background-color: #E8E5D0;
+    background-color:  #e1dfcc;
     box-shadow: none;
 }
 
