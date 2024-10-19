@@ -9,7 +9,7 @@
     font-family: EUkraine;
     src: url('app/fonts/E-Ukraine-Regular.woff2') format('woff2'),
         url('app/fonts/E-Ukraine-Regular.woff') format('woff'),
-        url('E-Ukraine-Regular.ttf') format('truetype');
+        url('e-Ukraine-Regular.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
