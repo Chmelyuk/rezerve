@@ -11,70 +11,55 @@
 </head>
 
 <body>
-    <div class="flip-container">
-        <div class="flipper">
-            <!-- Лицевая сторона -->
-            <div class="front container">
-                <header>
-                    <h1 class="textLogo">Резерв</h1>
-                </header>
+    <div class="container">
+        <header>
+            <h1 class="textLogo">Резерв</h1>
+        </header>
 
-                <div class="document">
-                    <h2>Військово-</h2>
-                    <h2>обліковий</h2>
-                    <h2>документ</h2>
-                    <p class="status">Дані уточнено вчасно</p>
-                    <p><strong>Дата народження:</strong></p>
-                    <p>16.04.1996</p>
+        <div class="document">
+            <h2>Військово-</h2>
+            <h2>обліковий</h2>
+            <h2>документ</h2>
+            <p class="status">Дані уточнено вчасно</p>
+            <p><strong>Дата народження:</strong></p>
+            <p>16.04.1996</p>
 
-                    <p><strong>Відстрочка до:</strong></p>
-                    <p>14.11.2024</p>
+            <p><strong>Відстрочка до:</strong></p>
+            <p>14.11.2024</p>
 
-                    <div class="wrap">
-                        <div class="items-wrap">
-                            <div class="item">
-                                <p>На обліку • Документ оновлено о 16:34 | 17.10.2024</p>
-                            </div>
-                            <div class="item">
-                                <p>На обліку • Документ оновлено о 16:34 | 17.10.2024</p>
-                            </div>
-                            <div class="item">
-                                <p>На обліку • Документ оновлено о 16:34 | 17.10.2024</p>
-                            </div>
-                            <div class="item">
-                                <p>На обліку • Документ оновлено о 16:34 | 17.10.2024</p>
-                            </div>
-                        </div>
+            <!-- Переместили wrap внутрь document -->
+            <div class="wrap">
+                <div class="items-wrap">
+                    <div class="item">
+                        <p>На обліку • Документ оновлено о 16:34 | 17.10.2024</p>
                     </div>
-                    <div class="footer">
-                        <div class="personal-info">
-                            <p><strong>Військовозобов'язаний:</strong></p>
-                            <h2>ЧМЕЛЮК</h2>
-                            <h2>Дмитро</h2>
-                            <h2>Васильович</h2>
-                        </div>
-                        <button class="dots">...</button>
+                    <div class="item">
+                        <p>На обліку • Документ оновлено о 16:34 | 19.10.2024</p>
+                    </div>
+                    <div class="item">
+                        <p>На обліку • Документ оновлено о 16:34 | 19.10.2024</p>
+                    </div>
+                    <div class="item">
+                        <p>На обліку • Документ оновлено о 16:34 | 19.10.2024</p>
                     </div>
                 </div>
-                <a href="javascript:void(0);" id="scan-button">
-                    <p class="scan-button">Сканувати документ</p>
-                </a>
             </div>
-
-            <!-- Обратная сторона с QR-кодом -->
-            <div class="back">
-                <img src="qr.png" alt="QR Code" class="qr-code">
+            <div class="footer">
+                <div class="personal-info">
+                    <p><strong>Військовозобов'язаний:</strong></p>
+                     <h2>ЧМЕЛЮК</h2>
+                    <h2>Дмитро</h2>
+                   <h2>Васильович</h2>
+                </div>
+                <button class="dots">...</button>
             </div>
         </div>
+        <a href="javascript:void(0);" id="scan-button">
+            <p class="scan-button">Сканувати документ</p>
+        </a>
     </div>
 
     <script>
-        const flipContainer = document.querySelector('.flip-container');
-
-        flipContainer.addEventListener('click', () => {
-            flipContainer.classList.toggle('flip');
-        });
-
         const itemsWrap = document.querySelector('.items-wrap');
 
         // Клонируем элементы
@@ -92,8 +77,8 @@
         const totalWidth = itemWidth * itemsWrap.children.length; // Общая ширина элементов
         const animationDuration = (totalWidth / 50); // Устанавливаем скорость анимации, чем больше значение, тем медленнее
 
-        itemsWrap.style.width = `${totalWidth}px`; // Устанавливаем ширину контейнера
-        itemsWrap.style.animationDuration = `${animationDuration}s`; // Устанавливаем длительность анимации
+        itemsWrap.style.width = ${totalWidth}px; // Устанавливаем ширину контейнера
+        itemsWrap.style.animationDuration = ${animationDuration}s; // Устанавливаем длительность анимации
 
         // Функция для включения камеры
         async function startCamera() {
