@@ -125,7 +125,7 @@ h2 {
     display: inline-flex;
     align-items: center;
     gap: 4px;
-    top: 650px;
+    top: 680px;
 }
 
 .scan-button::before {
@@ -282,7 +282,7 @@ a {
     text-align: center;
     z-index: 2000;
     position: fixed;
-        top: 600px;
+        top: 550px;
         left: 5%;
         transform: translateY(100%);
             transition: transform 0.3s ease-out;
