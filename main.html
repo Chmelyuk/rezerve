@@ -11,47 +11,54 @@
 </head>
 
 <body>
+    <header>
+        <h1 class="textLogo">Резерв</h1>
+    </header>
     <div class="container">
-        <header>
-            <h1 class="textLogo">Резерв</h1>
-        </header>
+        <div class="flip-container" id="flip-container">
+            <div class="flipper">
+                <div class="front">
+                    <div class="document">
+                        <h2>Військово-</h2>
+                        <h2>обліковий</h2>
+                        <h2>документ</h2>
+                        <p class="status">Дані уточнено вчасно</p>
+                        <p><strong>Дата народження:</strong></p>
+                        <p>16.04.1996</p>
 
-        <div class="document">
-            <h2>Військово-</h2>
-            <h2>обліковий</h2>
-            <h2>документ</h2>
-            <p class="status">Дані уточнено вчасно</p>
-            <p><strong>Дата народження:</strong></p>
-            <p>16.04.1996</p>
+                        <p><strong>Відстрочка до:</strong></p>
+                        <p>14.11.2024</p>
 
-            <p><strong>Відстрочка до:</strong></p>
-            <p>14.11.2024</p>
-
-            <!-- Переместили wrap внутрь document -->
-            <div class="wrap">
-                <div class="items-wrap">
-                    <div class="item">
-                        <p>На обліку • Документ оновлено о 16:34 | 19.10.2024</p>
-                    </div>
-                    <div class="item">
-                        <p>На обліку • Документ оновлено о 16:34 | 19.10.2024</p>
-                    </div>
-                    <div class="item">
-                        <p>На обліку • Документ оновлено о 16:34 | 19.10.2024</p>
-                    </div>
-                    <div class="item">
-                        <p>На обліку • Документ оновлено о 16:34 | 19.10.2024</p>
+                        <div class="wrap">
+                            <div class="items-wrap">
+                                <div class="item">
+                                    <p>На обліку • Документ оновлено о 16:34 | 17.10.2024</p>
+                                </div>
+                                <div class="item">
+                                    <p>На обліку • Документ оновлено о 16:34 | 19.10.2024</p>
+                                </div>
+                                <div class="item">
+                                    <p>На обліку • Документ оновлено о 16:34 | 19.10.2024</p>
+                                </div>
+                                <div class="item">
+                                    <p>На обліку • Документ оновлено о 16:34 | 19.10.2024</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="footer">
+                            <div class="personal-info">
+                                <p><strong>Військовозобов'язаний:</strong></p>
+                                <h2>ЧМЕЛЮК</h2>
+                                <h2>Дмитро</h2>
+                                <h2>Васильович</h2>
+                            </div>
+                            <button class="dots">...</button>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="footer">
-                <div class="personal-info">
-                    <p><strong>Військовозобов'язаний:</strong></p>
-                    <h2>Військово-</h2>
-                    <h2>обліковий</h2>
-                    <h2>документ</h2>
+                <div class="back">
+                    <img src="qr.png" alt="QR Code" class="qr-code">
                 </div>
-                <button class="dots">...</button>
             </div>
         </div>
         <a href="javascript:void(0);" id="scan-button">
@@ -59,53 +66,7 @@
         </a>
     </div>
 
-    <script>
-        const itemsWrap = document.querySelector('.items-wrap');
-
-        // Клонируем элементы
-        const items = itemsWrap.children;
-        const itemsArray = Array.from(items);
-
-        // Клонирование каждого элемента для создания бесшовной анимации
-        itemsArray.forEach(item => {
-            const clone = item.cloneNode(true);
-            itemsWrap.appendChild(clone);
-        });
-
-        // Измеряем ширину элемента
-        const itemWidth = items[0].getBoundingClientRect().width; // Получаем ширину первого элемента
-        const totalWidth = itemWidth * itemsWrap.children.length; // Общая ширина элементов
-        const animationDuration = (totalWidth / 50); // Устанавливаем скорость анимации, чем больше значение, тем медленнее
-
-        itemsWrap.style.width = `${totalWidth}px`; // Устанавливаем ширину контейнера
-        itemsWrap.style.animationDuration = `${animationDuration}s`; // Устанавливаем длительность анимации
-
-        // Функция для включения камеры
-        async function startCamera() {
-            try {
-                const stream = await navigator.mediaDevices.getUserMedia({ video: true });
-                const videoElement = document.createElement('video');
-                videoElement.srcObject = stream;
-                videoElement.play();
-
-                // Добавляем видео на страницу
-                document.body.appendChild(videoElement);
-                videoElement.style.position = 'fixed';
-                videoElement.style.top = '0';
-                videoElement.style.left = '0';
-                videoElement.style.width = '100%';
-                videoElement.style.height = '100%';
-                videoElement.style.zIndex = '1000'; // Чтобы видео было поверх остальных элементов
-                videoElement.style.objectFit = 'cover'; // Чтобы изображение занимало весь экран
-
-            } catch (error) {
-                console.error('Ошибка доступа к камере:', error);
-            }
-        }
-
-        // Обработчик события для кнопки
-        document.getElementById('scan-button').addEventListener('click', startCamera);
-    </script>
+    <script src="script.js"></script>
 </body>
 
 </html>
