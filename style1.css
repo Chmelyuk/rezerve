@@ -230,6 +230,8 @@ strong {
     position: absolute;
     left: 280px;
     top: 400px;
+    color: #000;
+    padding-bottom: 6px;
 }
 
 a{
