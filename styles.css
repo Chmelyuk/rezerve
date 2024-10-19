@@ -11,31 +11,31 @@ html, body {
     height: 100%;
     overflow: hidden; /* Запрещаем прокрутку */
 }
+
 @font-face {
     font-family: 'E Ukraine';
     src: url('app/fonts/E-Ukraine-Regular.woff2') format('woff2'),
-        url('app/fonts/E-Ukraine-Regular.woff') format('woff'),
-        url('app/fonts/E-Ukraine-Regular.ttf') format('truetype');
+         url('app/fonts/E-Ukraine-Regular.woff') format('woff'),
+         url('app/fonts/E-Ukraine-Regular.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
+
 body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100000px;
+    height: 100%; /* Исправлено на 100% */
     background-color: #E8E5D0;
 }
 
 .container {
     text-align: center;
-     display: flex;
+    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100%;
-   
-
+    height: 100%; /* Контейнер занимает весь экран */
 }
 
 .code {
@@ -55,7 +55,6 @@ body {
     display: flex;
     gap: 10px;
     margin-bottom: 40px;
-
 }
 
 .dots .dot {
@@ -86,16 +85,11 @@ button {
     background-color: #fff;
     cursor: pointer;
     color: #000;
-    
-
 }
 
-
 button:active {
-    background-color: #ddd;
     background-color: #000;
-        cursor: pointer;
-        color: #fff;
+    color: #fff;
 }
 
 button.empty {
@@ -108,9 +102,7 @@ button.delete {
     color: white;
 }
 
-.image-btn {
+.image-btn img {
     width: 30px;
     height: 20px;
-    margin-top: 10px;
-    margin-left: 7px;
 }
