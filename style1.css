@@ -53,12 +53,20 @@ body {
 .back {
     transform: rotateY(180deg);
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     background-color: white;
     border: 1.5px solid #959485;
     border-radius: 8px;
     height: 570px;
+    color: #55544c;
+    text-align: center;
+}
+
+.qr-text {
+    margin-bottom: 20px;
+    font-size: 16px;
 }
 
 #flip-container.flipped .flipper {
