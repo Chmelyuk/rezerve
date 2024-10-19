@@ -86,9 +86,9 @@ h2 {
     /* Adjust height as needed */
     position: absolute;
     /* Position absolutely */
-    left: 80px;
+    left: 85px;
     /* Adjust to position the image */
-    top: 670px;
+    top: 690px;
     /* Align vertically with text */
 }
 
@@ -232,7 +232,7 @@ strong {
     cursor: pointer;
     position: absolute;
     left: 280px;
-    top: 510px;
+    top: 490px;
     color: #000;
     padding-bottom: 6px;
 }
