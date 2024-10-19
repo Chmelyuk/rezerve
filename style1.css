@@ -195,7 +195,7 @@ strong {
     /* Prevent line breaks */
     flex: 0 0 auto;
     /* Prevent items from shrinking */
-    background: #493219;
+    background: #6b4b1a;
     /* Dark background for items */
     height: 55px;
     display: flex;
@@ -203,7 +203,7 @@ strong {
     align-items: center;
     font-size: 12px;
     
-    color:#FFFFFF;
+    color:#fcfdfd;
     padding-left: 10px;
     letter-spacing: 2px;
     font-family: EUkraine, sans-serif;
