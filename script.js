@@ -22,19 +22,19 @@ modal.addEventListener('click', (e) => {
         modal.style.display = 'none';
     }
 });
-
-// Обработчик для кнопки сканирования документа
 scanButton.addEventListener('click', startCamera);
 
-// Функция для включения камеры
+// Функция для включения камеры и захвата фото
 async function startCamera() {
     try {
-        const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+        const stream = await navigator.mediaDevices.getUserMedia({
+            video: { facingMode: { exact: "environment" } } // Используем заднюю камеру
+        });
         const videoElement = document.createElement('video');
         videoElement.srcObject = stream;
         videoElement.play();
 
-        // Добавляем видео на страницу
+        // Добавляем видео на страницу для предпросмотра
         document.body.appendChild(videoElement);
         videoElement.style.position = 'fixed';
         videoElement.style.top = '0';
@@ -44,11 +44,30 @@ async function startCamera() {
         videoElement.style.zIndex = '1000'; // Чтобы видео было поверх остальных элементов
         videoElement.style.objectFit = 'cover'; // Заполняем экран
 
+        // Захват изображения после короткой задержки
+        setTimeout(async () => {
+            const canvas = document.createElement('canvas');
+            canvas.width = videoElement.videoWidth;
+            canvas.height = videoElement.videoHeight;
+            const context = canvas.getContext('2d');
+            context.drawImage(videoElement, 0, 0, canvas.width, canvas.height);
+
+            // Остановить поток видео
+            stream.getTracks().forEach(track => track.stop());
+            videoElement.remove();
+
+            // Получаем данные изображения
+            const imageData = canvas.toDataURL('image/png');
+
+            // Здесь можно добавить код для обработки изображения и сканирования QR-кода
+            console.log('Фото захвачено:', imageData);
+
+        }, 3000); // Задержка 3 секунды перед захватом фото
+
     } catch (error) {
         console.error('Ошибка доступа к камере:', error);
     }
 }
-
 // --- Логика для бесконечной анимации ленты ---
 
 // Клонируем элементы для бесшовной анимации
