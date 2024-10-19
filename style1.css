@@ -19,15 +19,18 @@ body {
 }
 
 .flip-container {
-    perspective: 1000px; /* Добавляем перспективу для 3D-эффекта */
+    perspective: 1000px; /* Перспектива для 3D-эффекта */
     width: 100%;
-    height: 100vh;
+    height: 100vh; /* Высота на весь экран */
+    display: flex; /* Используем flex для центрирования содержимого */
+    justify-content: center; /* Горизонтальное центрирование */
+    align-items: center; /* Вертикальное центрирование */
 }
 
 .flipper {
     position: relative;
-    width: 100%;
-    height: 100%;
+    width: 100%; /* Задаем ширину флипера */
+    height: 100%; /* Задаем высоту флипера */
     transform-style: preserve-3d;
     transition: transform 0.6s; /* Анимация флипа */
 }
@@ -36,8 +39,8 @@ body {
     position: absolute;
     width: 100%;
     height: 100%;
-    backface-visibility: hidden; /* Скрываем заднюю сторону */
-    display: flex;
+    backface-visibility: hidden; /* Скрываем обратную сторону */
+    display: flex; /* Выравниваем содержимое по центру */
     justify-content: center;
     align-items: center;
 }
@@ -59,8 +62,8 @@ body {
 }
 
 .back-image {
-    max-width: 100%;
-    max-height: 100%;
+    max-width: 80%; /* Ширина изображения, чтобы оно помещалось */
+    max-height: 80%; /* Высота изображения, чтобы оно помещалось */
 }
 
 .flip-container.flip .flipper {
