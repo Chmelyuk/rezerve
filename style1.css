@@ -16,6 +16,9 @@
 body {
     background-color: #e1dfcc;
     font-family: EUkraine, sans-serif;
+     overflow: hidden;
+    position: fixed; /* Это предотвратит прокрутку на мобильных устройствах */
+    width: 100%;
 }
 
 .container {
