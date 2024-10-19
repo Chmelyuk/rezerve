@@ -1,3 +1,4 @@
+
 * {
     margin: 0;
     padding: 0;
@@ -15,51 +16,8 @@
 
 body {
     background-color: #e1dfcc;
+    /* Light background color */
     font-family: EUkraine, sans-serif;
-}
-
-.flip-container {
-    perspective: 1000px; /* Добавляем перспективу для 3D-эффекта */
-    width: 100%; 
-    height: 100vh;
-}
-
-.flipper {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    transform-style: preserve-3d;
-    transition: transform 0.6s;
-}
-
-.front, .back {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden; /* Скрываем заднюю сторону */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.front {
-    background-color: #d5d3be;
-    /* White */
-}
-
-.back {
-    background-color: white;
-    transform: rotateY(180deg); /* Поворачиваем обратную сторону */
-}
-
-.qr-code {
-    width: 300px;
-    height: 300px;
-    object-fit: contain;
-}
-
-.flip-container.flip .flipper {
-    transform: rotateY(180deg); /* Флип при добавлении класса */
 }
 
 .container {
@@ -72,10 +30,13 @@ header {
     align-items: center;
 }
 
+
 .document {
     background: #d5d3be;
+    /* White */
     padding: 15px;
-    border: 1.5px solid #959485; /* Light Gray */
+    border: 1.5px solid #959485;
+    /* Light Gray */
     border-radius: 8px;
     margin-top: 10px;
 }
@@ -88,6 +49,7 @@ header {
 h2 {
     font-size: 28px;
     font-weight: 500;
+    
 }
 
 .footer {
@@ -96,40 +58,159 @@ h2 {
 
 .footer p {
     margin-bottom: 5px;
-    font-size: 14px; /* Smaller font for footer text */
+    font-size: 14px;
+    /* Smaller font for footer text */
 }
 
 .personal-info {
     margin-top: 10px;
 }
-
 .scan-button {
     padding-top: 20px;
     padding-left: 25%;
+    
     text-align: left; /* Выровняем содержимое по левому краю */
     position: relative; /* Важно для псевдоэлемента */
     display: inline-flex; /* Для горизонтального расположения элементов */
     align-items: center; /* Вертикальное выравнивание */
     gap: 4px; /* Отступ в 4 пикселя между псевдоэлементом и текстом */
 }
-
+.scan-button::before {
+    content: '';
+    background-image: url('qr.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 18px; /* Ширина QR-кода */
+    height: 18px; /* Высота QR-кода */
+}
 .status {
     margin-bottom: 20px;
     position: relative;
     margin-left: 25px;
-    margin-top: 20px; /* Positioning context for the pseudo-element */
+    margin-top: 20px;
+    /* Positioning context for the pseudo-element */
 }
 
 .status::before {
     content: '';
-    background-image: url('checkbox.png'); /* Path to the checkmark image */
-    background-size: contain; /* Adjust size to fit */
-    background-repeat: no-repeat; /* Don't repeat the image */
-    width: 18px; /* Adjust width as needed */
-    height: 18px; /* Adjust height as needed */
-    position: absolute; /* Position absolutely */
-    left: -25px; /* Adjust to position the image */
-    top: 0; /* Align vertically with text */
+    background-image: url('checkbox.png');
+    /* Path to the checkmark image */
+    background-size: contain;
+    /* Adjust size to fit */
+    background-repeat: no-repeat;
+    /* Don't repeat the image */
+    width: 18px;
+    /* Adjust width as needed */
+    height: 18px;
+    /* Adjust height as needed */
+    position: absolute;
+    /* Position absolutely */
+    left: -25px;
+    /* Adjust to position the image */
+    top: 0;
+    /* Align vertically with text */
+}
+
+.document {
+    position: relative;
+    padding-top: 25px;
+    /* Positioning context for the pseudo-element */
+}
+
+.document::after {
+    content: '';
+    background-image: url('logo.png');
+    /* Path to the emblem image */
+    background-size: contain;
+    /* Adjust size to fit */
+    background-repeat: no-repeat;
+    /* Don't repeat the image */
+    width: 40px;
+    /* Adjust width as needed */
+    height: 40px;
+    /* Adjust height as needed */
+    position: absolute;
+    /* Position absolutely */
+    right: 15px;
+    /* Adjust to position the image */
+    top: 25px;
+    /* Adjust to position the image */
+}
+.textLogo{
+    padding-top: 30px;
+    padding-bottom: 20px;
+    font-size: 24px;
+}
+.textLogo::after {
+    content: '+';
+    width: 20px;
+    /* Adjust width as needed */
+    height: 20px;
+    /* Adjust height as needed */
+    position: absolute;
+    /* Position absolutely */
+    left: 107px;
+    /* Adjust to position the image */
+    top: 47px;
+    /* Align vertically with text */
+    color: #FF8C00;
+}
+
+strong {
+    color: #55544c;
+}
+
+.wrap {
+   margin-top: 65px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    /* Hide overflow */
+    position: relative;
+    /* Positioning context for absolute elements */
+    height: 30px; 
+    left: -15px;
+    width: 348px;
+    /* Height of the marquee */
+}
+
+.items-wrap {
+    display: flex;
+    /* Allows elements to be in a row */
+    animation: scroll linear infinite;
+    /* Continuous scrolling animation */
+}
+
+.item {
+    white-space: nowrap;
+    /* Prevent line breaks */
+    flex: 0 0 auto;
+    /* Prevent items from shrinking */
+    background: #6b4b1a;
+    /* Dark background for items */
+    height: 55px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    
+    color:#fcfdfd;
+    padding-left: 10px;
+    letter-spacing: 2px;
+    font-family: EUkraine, sans-serif;
+    padding-bottom: 15px;
+  
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+        /* Start at the initial position */
+    }
+
+    100% {
+        transform: translateX(-100%);
+        /* Move left by 100% of the total width */
+    }
 }
 
 .dots {
@@ -138,26 +219,16 @@ h2 {
     font-size: 24px;
     border: none;
     border-radius: 50%;
-    background-color: #FF8C00;
+    background-color:#FF8C00;
     cursor: pointer;
-    position: relative; /* Important for positioning */
+    position: absolute;
+    left: 280px;
+    top: 490px;
+    color: #000;
+    padding-bottom: 6px;
 }
 
-.wrap {
-    overflow: hidden; /* Обрезаем все, что выходит за границы */
-    white-space: nowrap; /* Отключаем перенос строк */
-    margin-top: 20px; /* Отступ сверху для wrap */
-}
-
-.items-wrap {
-    display: inline-flex; /* Используем flex для горизонтального расположения элементов */
-    will-change: transform; /* Указание для браузера, что будет анимация */
-}
-
-.item {
-    padding: 10px 15px; /* Увеличиваем отступы */
-    margin-right: 20px; /* Увеличиваем отступ между элементами */
-    background-color: #f0e7d3; /* Цвет фона элемента */
-    border-radius: 8px; /* Скругляем углы */
-    white-space: nowrap; /* Отключаем перенос строк внутри элемента */
+a{
+    text-decoration: none;
+    color: #000;
 }
