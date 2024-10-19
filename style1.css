@@ -158,7 +158,7 @@ h2 {
     /* Adjust height as needed */
     position: absolute;
     /* Position absolutely */
-    left: 110px;
+    left: 107px;
     /* Adjust to position the image */
     top: 47px;
     /* Align vertically with text */
@@ -170,7 +170,7 @@ strong {
 }
 
 .wrap {
-   margin-top: 75px;
+   margin-top: 65px;
     margin-bottom: 20px;
     overflow: hidden;
     /* Hide overflow */
@@ -232,7 +232,7 @@ strong {
     cursor: pointer;
     position: absolute;
     left: 280px;
-    top: 590px;
+    top: 550px;
     color: #000;
     padding-bottom: 6px;
 }
