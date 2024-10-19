@@ -1,4 +1,3 @@
-
 * {
     margin: 0;
     padding: 0;
@@ -16,12 +15,59 @@
 
 body {
     background-color: #e1dfcc;
-    /* Light background color */
     font-family: EUkraine, sans-serif;
 }
 
 .container {
-    padding: 20px;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.flip-container {
+    perspective: 1000px;
+    position: relative;
+    width: 100%;
+    height: auto;
+}
+
+.flipper {
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+    position: relative;
+}
+
+.front,
+.back {
+    width: 100%;
+    backface-visibility: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.front {
+    transform: rotateY(0deg);
+}
+
+.back {
+    transform: rotateY(180deg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    border: 1.5px solid #959485;
+    border-radius: 8px;
+    height: 570px;
+}
+
+#flip-container.flipped .flipper {
+    transform: rotateY(180deg);
+}
+
+.qr-code {
+    width: 80%;
+    height: auto;
 }
 
 header {
@@ -30,13 +76,10 @@ header {
     align-items: center;
 }
 
-
 .document {
     background: #d5d3be;
-    /* White */
     padding: 15px;
     border: 1.5px solid #959485;
-    /* Light Gray */
     border-radius: 8px;
     margin-top: 10px;
 }
@@ -49,7 +92,6 @@ header {
 h2 {
     font-size: 28px;
     font-weight: 500;
-    
 }
 
 .footer {
@@ -59,100 +101,81 @@ h2 {
 .footer p {
     margin-bottom: 5px;
     font-size: 14px;
-    /* Smaller font for footer text */
 }
 
 .personal-info {
     margin-top: 10px;
 }
+
 .scan-button {
     padding-top: 20px;
     padding-left: 25%;
-    
-    text-align: left; /* Выровняем содержимое по левому краю */
-    position: relative; /* Важно для псевдоэлемента */
-    display: inline-flex; /* Для горизонтального расположения элементов */
-    align-items: center; /* Вертикальное выравнивание */
-    gap: 4px; /* Отступ в 4 пикселя между псевдоэлементом и текстом */
+    text-align: left;
+    position: absolute;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    top: 650px;
 }
+
 .scan-button::before {
     content: '';
     background-image: url('qr.png');
     background-size: contain;
     background-repeat: no-repeat;
-    width: 18px; /* Ширина QR-кода */
-    height: 18px; /* Высота QR-кода */
+    width: 18px;
+    height: 18px;
 }
+
 .status {
     margin-bottom: 20px;
     position: relative;
     margin-left: 25px;
     margin-top: 20px;
-    /* Positioning context for the pseudo-element */
 }
 
 .status::before {
     content: '';
     background-image: url('checkbox.png');
-    /* Path to the checkmark image */
     background-size: contain;
-    /* Adjust size to fit */
     background-repeat: no-repeat;
-    /* Don't repeat the image */
     width: 18px;
-    /* Adjust width as needed */
     height: 18px;
-    /* Adjust height as needed */
     position: absolute;
-    /* Position absolutely */
     left: -25px;
-    /* Adjust to position the image */
     top: 0;
-    /* Align vertically with text */
 }
 
 .document {
     position: relative;
     padding-top: 25px;
-    /* Positioning context for the pseudo-element */
 }
 
 .document::after {
     content: '';
     background-image: url('logo.png');
-    /* Path to the emblem image */
     background-size: contain;
-    /* Adjust size to fit */
     background-repeat: no-repeat;
-    /* Don't repeat the image */
     width: 40px;
-    /* Adjust width as needed */
     height: 40px;
-    /* Adjust height as needed */
     position: absolute;
-    /* Position absolutely */
     right: 15px;
-    /* Adjust to position the image */
     top: 25px;
-    /* Adjust to position the image */
 }
-.textLogo{
+
+.textLogo {
     padding-top: 30px;
     padding-bottom: 20px;
     font-size: 24px;
 }
+
 .textLogo::after {
     content: '+';
     width: 20px;
-    /* Adjust width as needed */
     height: 20px;
-    /* Adjust height as needed */
     position: absolute;
-    /* Position absolutely */
-    left: 107px;
-    /* Adjust to position the image */
-    top: 47px;
-    /* Align vertically with text */
+    left: 96px;
+    top: 28px;
     color: #FF8C00;
 }
 
@@ -161,55 +184,43 @@ strong {
 }
 
 .wrap {
-   margin-top: 65px;
+    margin-top: 65px;
     margin-bottom: 20px;
     overflow: hidden;
-    /* Hide overflow */
     position: relative;
-    /* Positioning context for absolute elements */
-    height: 30px; 
+    height: 30px;
     left: -15px;
-    width: 348px;
-    /* Height of the marquee */
+    width: 390px;
 }
 
 .items-wrap {
     display: flex;
-    /* Allows elements to be in a row */
     animation: scroll linear infinite;
-    /* Continuous scrolling animation */
 }
 
 .item {
     white-space: nowrap;
-    /* Prevent line breaks */
     flex: 0 0 auto;
-    /* Prevent items from shrinking */
     background: #6b4b1a;
-    /* Dark background for items */
     height: 55px;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 14px;
-    
-    color:#fcfdfd;
+    color: #fcfdfd;
     padding-left: 10px;
     letter-spacing: 2px;
     font-family: EUkraine, sans-serif;
     padding-bottom: 15px;
-  
 }
 
 @keyframes scroll {
     0% {
         transform: translateX(0);
-        /* Start at the initial position */
     }
 
     100% {
         transform: translateX(-100%);
-        /* Move left by 100% of the total width */
     }
 }
 
@@ -219,16 +230,16 @@ strong {
     font-size: 24px;
     border: none;
     border-radius: 50%;
-    background-color:#FF8C00;
+    background-color: #FF8C00;
     cursor: pointer;
     position: absolute;
-    left: 280px;
+    left: 300px;
     top: 490px;
     color: #000;
     padding-bottom: 6px;
 }
 
-a{
+a {
     text-decoration: none;
     color: #000;
 }
