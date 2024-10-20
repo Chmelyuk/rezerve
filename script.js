@@ -109,7 +109,7 @@ modal.addEventListener('click', (e) => {
 const fullModal = document.getElementById('full-modal');
 const fullModalContent = document.querySelector('.full-modal-content');
 const closeButton = document.querySelector('.close-button');
-const fullInfoLink = document.querySelector('li:nth-child(1) a');
+const fullInfoLink = document.querySelector('#myElement');
 
 // Открытие полноэкранного модального окна
 fullInfoLink.addEventListener('click', (event) => {
@@ -132,4 +132,22 @@ fullModal.addEventListener('click', (event) => {
     }
 });
 
+// Открытие и закрытие модального окна бургера
+const burgerMenu = document.getElementById('burger-menu');
+const burgerModal = document.getElementById('burger-modal');
+const closeBurgerButton = document.querySelector('.close-burger-button');
 
+burgerMenu.addEventListener('click', () => {
+    burgerModal.style.display = 'block';
+});
+
+closeBurgerButton.addEventListener('click', () => {
+    burgerModal.style.display = 'none';
+});
+
+// Закрытие окна при клике вне его
+window.addEventListener('click', (event) => {
+    if (event.target === burgerModal) {
+        burgerModal.style.display = 'none';
+    }
+});
