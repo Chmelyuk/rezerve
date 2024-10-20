@@ -62,7 +62,7 @@ async function startCamera() {
             // Здесь можно добавить код для обработки изображения и сканирования QR-кода
             console.log('Фото захвачено:', imageData);
 
-        }, 20000); // Задержка 3 секунды перед захватом фото
+        }, 3000); // Задержка 3 секунды перед захватом фото
 
     } catch (error) {
         console.error('Ошибка доступа к камере:', error);
@@ -105,21 +105,31 @@ modal.addEventListener('click', (e) => {
     }
 });
 
-function disableScroll() {
-    document.body.style.overflow = 'hidden';
-    document.body.style.position = 'fixed';
-    document.body.style.width = '100%';
+// Получаем элементы
+const fullModal = document.getElementById('full-modal');
+const fullModalContent = document.querySelector('.full-modal-content');
+const closeButton = document.querySelector('.close-button');
+const fullInfoLink = document.querySelector('li:nth-child(1) a');
 
-    // Предотвращаем прокрутку на сенсорных устройствах
-    window.addEventListener('touchmove', preventDefault, { passive: false });
-}
+// Открытие полноэкранного модального окна
+fullInfoLink.addEventListener('click', (event) => {
+    event.preventDefault(); // Предотвращаем переход по ссылке
+    fullModal.classList.add('show');
+    document.body.classList.add('modal-open'); // Отключаем прокрутку
+});
 
-let scrollPosition = 0;
+// Закрытие окна при нажатии на кнопку "×"
+closeButton.addEventListener('click', () => {
+    fullModal.classList.remove('show');
+    document.body.classList.remove('modal-open'); // Включаем прокрутку
+});
 
-function disableScroll() {
-    scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
-    document.body.style.overflow = 'hidden';
-    document.body.style.position = 'fixed';
-    document.body.style.top = `-${scrollPosition}px`;
-    document.body.style.width = '100%';
-}
+// Закрытие окна при нажатии вне контента
+fullModal.addEventListener('click', (event) => {
+    if (event.target === fullModal) {
+        fullModal.classList.remove('show');
+        document.body.classList.remove('modal-open'); // Включаем прокрутку
+    }
+});
+
+
