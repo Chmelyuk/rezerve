@@ -472,7 +472,7 @@ a {
 .block-info {
     margin-bottom: 20px;
     text-align: justify;
-
+    font-size: 14px;
 }
 
 .info p {
@@ -486,14 +486,15 @@ a {
     border: none;
     border-top: 1px solid #ccc;
     margin: 10px 0;
+    width: 100%;
 }
 
-.info strong {
-    font-size: 1.1em;
+.block-info strong {
+    
     color: #000;
 }
 
-.date{
+.block-info span{
     
     padding-left: 10px;
     text-align: right;
@@ -517,9 +518,19 @@ a {
     /* Выравнивание текста */
 }
 
+.info1 p {
+    display: flex;
+    justify-content: space-between;
+    /* Разделяет элементы по краям */
+    align-items: center;
+    /* Вертикально центрирует содержимое */
+    margin: 5px 0;
+    padding-bottom: 15px;
+    text-align: justify;
+    /* Выравнивание текста */
+}
 
-
-.info {
+.info1 {
     background-color: #f9f9f9;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -531,36 +542,45 @@ a {
     
 }
 
-.block-info {
+.block-info1 {
     margin-bottom: 20px;
     text-align: justify;
 
 }
 
-.info p {
+.info1 p {
     margin: 5px 0;
     padding-bottom: 15px;
     text-align: justify;
     
 }
 
-.info hr {
+.info1 h2 {
+    font-size: 1.1em;
+    margin-bottom: 15px;
+    font-weight: 600;
+
+}
+
+.info1 hr {
     border: none;
     border-top: 1px solid #ccc;
     margin: 10px 0;
+    width: 100%;
 }
 
-.info strong {
-    font-size: 1.1em;
+.info1 strong {
+    
     color: #000;
 }
 
-.date{
+.info1 span{
     
-    padding-left: 10px;
+    padding-left: 100px;
     text-align: right;
     
 }
+ 
 
 .blocks{
     padding-left: 20px;
@@ -572,6 +592,8 @@ a {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     padding: 20px;
     width: 100%;
+    font-size: 14px;
+    margin-bottom: 20px;
 }
 
 .vlk-info {
@@ -586,10 +608,76 @@ a {
 
 .vlk-info span {
    
-    padding-left: 100px;
+    padding-left: 120px;
     padding-bottom: 20px;
 }
 
 body.modal-open {
     overflow: hidden;
+}
+
+.vlk1 {
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 100%;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+.vlk1-info {
+    margin-bottom: 15px;
+  
+}
+
+.vlk1-info p {
+    padding-left: 1px;
+    display: flex;
+    justify-content: space-between;
+  
+}
+
+
+.status1 {
+    margin-bottom: 20px;
+    position: relative;
+  
+    margin-top: 20px;
+    
+}
+
+.status1::before {
+    content: '';
+    background-image: url('checkbox.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 18px;
+    height: 18px;
+    position: absolute;
+    left: -30px;
+    top: 2;
+    
+}
+
+.vlk2 {
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 100%;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+.vlk2-info {
+    margin-bottom: 15px;
+
+}
+
+.vlk2-info p {
+    padding-left: 1px;
+    display: flex;
+    justify-content: space-between;
+    margin-left: 30px;
 }
