@@ -15,9 +15,7 @@
 }
 
 body {
-      overflow: hidden;
-    position: fixed; 
-    width: 100%;
+    
     background-color: #e1dfcc;
     font-family: EUkraine, sans-serif;
 }
@@ -362,3 +360,236 @@ a {
         padding-right: 10;
 }
 
+/* Полноэкранное модальное окно */
+.full-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    /* Тёмный фон */
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    transition: opacity 0.3s ease-out;
+    opacity: 0;
+    
+}
+
+.full-modal.show {
+    display: flex;
+    opacity: 1;
+    /* Плавное появление */
+}
+
+.full-modal-content {
+    padding-top: 50px;
+    background-color: #e1dfcc;
+    
+    border-radius: 10px;
+    width: 100%;
+    max-width: 600px;
+    height: 90%;
+    overflow-y: auto;
+    /* Скролл для большого контента */
+    position: relative;
+}
+
+.full-modal-content::after {
+    content: '';
+    background-image: url('logo.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 60px;
+    height: 60px;
+    position: absolute;
+    right: 15px;
+    top: 60px;
+}
+
+/* Кнопка закрытия */
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.wrap-full {
+    margin-top: 20px;
+    overflow: hidden;
+    position: relative;
+    height: 55px;
+    width: 100%; 
+    left: 0px;/* Фиксируем ширину */
+}
+
+.items-wrap-full {
+    display: flex;
+    animation: scroll-full 10s linear infinite;
+    white-space: nowrap; /* Элементы в одну линию */
+}
+
+/* Стили для item-full */
+.item-full {
+    flex: 0 0 auto; /* Фиксируем ширину */
+    width: 200%; /* Вписываем в родителя */
+    background: #6b4b1a;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    color: #fcfdfd;
+   
+    text-align: center;
+}
+
+@keyframes scroll-full {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+.info {
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    padding: 20px;
+    width: 100%;
+    display: flex;
+
+    
+}
+
+.block-info {
+    margin-bottom: 20px;
+    text-align: justify;
+
+}
+
+.info p {
+    margin: 5px 0;
+    padding-bottom: 15px;
+    text-align: justify;
+    
+}
+
+.info hr {
+    border: none;
+    border-top: 1px solid #ccc;
+    margin: 10px 0;
+}
+
+.info strong {
+    font-size: 1.1em;
+    color: #000;
+}
+
+.date{
+    
+    padding-left: 10px;
+    text-align: right;
+    
+}
+
+.blocks{
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.info p {
+    display: flex;
+    justify-content: space-between;
+    /* Разделяет элементы по краям */
+    align-items: center;
+    /* Вертикально центрирует содержимое */
+    margin: 5px 0;
+    padding-bottom: 15px;
+    text-align: justify;
+    /* Выравнивание текста */
+}
+
+
+
+.info {
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    padding: 20px;
+    width: 100%;
+    display: flex;
+
+    
+}
+
+.block-info {
+    margin-bottom: 20px;
+    text-align: justify;
+
+}
+
+.info p {
+    margin: 5px 0;
+    padding-bottom: 15px;
+    text-align: justify;
+    
+}
+
+.info hr {
+    border: none;
+    border-top: 1px solid #ccc;
+    margin: 10px 0;
+}
+
+.info strong {
+    font-size: 1.1em;
+    color: #000;
+}
+
+.date{
+    
+    padding-left: 10px;
+    text-align: right;
+    
+}
+
+.blocks{
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.vlk {
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 100%;
+}
+
+.vlk-info {
+    margin-bottom: 15px;
+}
+
+.vlk-info p {
+    margin: 5px 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.vlk-info span {
+   
+    padding-left: 100px;
+    padding-bottom: 20px;
+}
+
+body.modal-open {
+    overflow: hidden;
+}
