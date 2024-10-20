@@ -108,11 +108,17 @@ h2 {
 
 .footer {
     margin-top: 15px;
+    margin-bottom: 15px;
 }
 
 .footer p {
     margin-bottom: 5px;
     font-size: 14px;
+}
+
+.footer h2 {
+    font-size: 26px;
+    font-weight: 500;
 }
 
 .personal-info {
@@ -547,7 +553,7 @@ a {
 .block-info1 {
     margin-bottom: 20px;
     text-align: justify;
-
+    font-size: 14px;
 }
 
 .info1 p {
