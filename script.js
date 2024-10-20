@@ -132,4 +132,23 @@ fullModal.addEventListener('click', (event) => {
     }
 });
 
+// Открытие и закрытие модального окна бургера
+const burgerMenu = document.getElementById('burger-menu');
+const burgerModal = document.getElementById('burger-modal');
+const closeBurgerButton = document.querySelector('.close-burger-button');
+
+burgerMenu.addEventListener('click', () => {
+    burgerModal.style.display = 'block';
+});
+
+closeBurgerButton.addEventListener('click', () => {
+    burgerModal.style.display = 'none';
+});
+
+// Закрытие окна при клике вне его
+window.addEventListener('click', (event) => {
+    if (event.target === burgerModal) {
+        burgerModal.style.display = 'none';
+    }
+});
 
