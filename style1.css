@@ -187,6 +187,7 @@ h2 {
     padding-top: 30px;
     padding-bottom: 20px;
     font-size: 24px;
+    padding-left: 15px;
 }
 
 .textLogo::after {
@@ -197,6 +198,7 @@ h2 {
     left: 96px;
     top: 28px;
     color: #FF8C00;
+    padding-left: 14px;
 }
 
 strong {
@@ -691,3 +693,173 @@ body.modal-open {
     justify-content: space-between;
     margin-left: 30px;
 }
+/* Модальное окно бургера (полный экран) */
+#burger-modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    /* Полная ширина экрана */
+    height: 100vh;
+    /* Полная высота экрана */
+     background-color: #e1dfcc;
+    /* Светлый фон с небольшой прозрачностью */
+    overflow: hidden;
+    /* Отключаем прокрутку */
+}
+
+/* Контент внутри модального окна */
+.burger-modal-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    /* Растягиваем на всю высоту */
+    width: 100%;
+    /* Растягиваем на всю ширину */
+    text-align: left;
+    padding-left: 10px;
+    padding-right: 50px;
+    padding-bottom: 350px;
+    
+}
+
+.burger-modal-content h2{
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-size: 26px;
+}
+
+.burger-menu-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.burger-menu-list li {
+    margin: 15px 0;
+}
+
+.burger-menu-list a {
+    text-decoration: none;
+    font-size: 16px;
+    /* Крупный текст */
+    color: #333;
+    /* Темный текст для читабельности */
+    font-weight: bold;
+}
+
+/* Кнопка закрытия */
+.close-burger-button {
+    font-size: 40px;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+    color: #333;
+    /* Темный цвет для кнопки */
+   
+    /* Светлый фон для кнопки */
+    border: none;
+    border-radius: 50%;
+    /* Круглая кнопка */
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.burger-menu {
+    font-size: 30px;
+    background: none;
+    border: none;
+    color: black;
+    cursor: pointer;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+}
+
+.burger-menu-list li {
+    position: relative;
+}
+
+.burger-menu-list li:nth-child(1)::before {
+    content: url('notice.png');
+    position: absolute;
+    left: -70px;
+    top:-35px;
+    /* Смещение */
+    scale: 0.35;
+}
+
+.burger-menu-list li {
+    position: relative;
+}
+
+.burger-menu-list li:nth-child(2)::before {
+    content: url('faq.png');
+    position: absolute;
+    left: -75px;
+        top: -35px;
+        /* Смещение */
+        scale: 0.35;
+}
+.burger-menu-list li {
+    position: relative;
+}
+
+.burger-menu-list li:nth-child(3)::before {
+    content: url('change.png');
+    position: absolute;
+    left: -65px;
+        top: -30px;
+        /* Смещение */
+        scale: 0.35;
+}
+.burger-menu-list li {
+    position: relative;
+}
+
+.burger-menu-list li:nth-child(4)::before {
+    content: url('settings.png');
+    position: absolute;
+    left: -65px;
+        top: -30px;
+        /* Смещение */
+        scale: 0.35;
+}
+.burger-menu-list li {
+    position: relative;
+}
+
+.burger-menu-list li:nth-child(5)::before {
+    content: url('exit.png');
+    position: absolute;
+    left: -65px;
+        top: -30px;
+        /* Смещение */
+        scale: 0.35;
+}
+
+ .burger-modal-content hr {
+     border: none;
+     border-top: 1px solid #ccc;
+     margin: 10px 0;
+     width: 130%;
+     margin-left: 20px;
+    
+ }
+
+
+ .burger-modal-content p{
+    text-align: left;
+    align-items: start;
+ }
+
+ a{color: #000;}
