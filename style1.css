@@ -7,13 +7,17 @@
 
 @font-face {
     font-family: EUkraine;
-    src: url('e-Ukraine-Regular.ttf') format('truetype');
+    src: url('app/fonts/E-Ukraine-Regular.woff2') format('woff2'),
+        url('app/fonts/E-Ukraine-Regular.woff') format('woff'),
+        url('e-Ukraine-Regular.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
 
 body {
-    
+    overflow: hidden;
+        position: fixed;
+        width: 100%;
     background-color: #e1dfcc;
     font-family: EUkraine, sans-serif;
 }
