@@ -494,11 +494,17 @@ a {
     
 }
 
+
+.info span {
+    margin-left: 75px;
+   
+
+}
 .info hr {
     border: none;
     border-top: 1px solid #ccc;
     margin: 10px 0;
-    width: 100%;
+    width: 110%;
 }
 
 .block-info strong {
@@ -578,7 +584,7 @@ a {
     border: none;
     border-top: 1px solid #ccc;
     margin: 10px 0;
-    width: 100%;
+    width: 110%;
 }
 
 .info1 strong {
@@ -616,7 +622,6 @@ a {
     margin: 5px 0;
     display: flex;
     justify-content: space-between;
-    padding-bottom: 5px;
 }
 
 .vlk-info span {
@@ -648,6 +653,8 @@ body.modal-open {
     padding-left: 1px;
     display: flex;
     justify-content: space-between;
+    padding-bottom: 5px;
+    padding: 8px;
   
 }
 
@@ -724,7 +731,7 @@ body.modal-open {
     text-align: left;
     padding-left: 10px;
     padding-right: 50px;
-    padding-bottom: 350px;
+    padding-bottom: 220px;
     
 }
 
@@ -743,6 +750,7 @@ body.modal-open {
 
 .burger-menu-list li {
     margin: 15px 0;
+    padding: 5px;
 }
 
 .burger-menu-list a {
@@ -786,7 +794,7 @@ body.modal-open {
     top: 20px;
 }
 
-.burger-menu-list li {
+.burger-menu-list a {
     position: relative;
 }
 
