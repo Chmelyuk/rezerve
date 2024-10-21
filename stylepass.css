@@ -1,0 +1,140 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: EUkraine, sans-serif;
+}
+
+@font-face {
+    font-family: EUkraine;
+    src: url('app/fonts/E-Ukraine-Regular.woff2') format('woff2'),
+        url('app/fonts/E-Ukraine-Regular.woff') format('woff'),
+        url('e-Ukraine-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #E8E5D0;
+    font-family: EUkraine, sans-serif;
+}
+
+.container {
+    text-align: center;
+
+
+}
+
+.code {
+    margin-bottom: 20px;
+    font-size: 28px;
+    font-weight: 500;
+    padding-bottom: 30px;
+    margin-top: 50px;
+}
+
+.pin-code {
+    margin-top: 190px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.dots {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 60px;
+    
+
+}
+
+.dots .dot {
+    width: 10px;
+    height: 10px;
+    background-color: #000;
+    border-radius: 50%;
+    opacity: 0.2;
+    transition: opacity 0.2s;
+    margin: 5px;
+}
+
+.dots .active {
+    opacity: 1;
+}
+
+.keypad {
+    display: grid;
+    grid-template-columns: repeat(3, 60px);
+    grid-gap: 30px;
+}
+
+button {
+    width: 60px;
+    height: 60px;
+    font-size: 24px;
+    border: none;
+    border-radius: 50%;
+    background-color: #fff;
+    cursor: pointer;
+    color: #000;
+
+
+}
+
+
+button:active {
+    background-color: #ddd;
+    background-color: #000;
+    cursor: pointer;
+    color: #fff;
+}
+
+button.empty {
+    background-color: #E8E5D0;
+    box-shadow: none;
+}
+
+button.delete {
+    background-color: #FF6F61;
+    color: white;
+}
+
+.image-btn {
+    width: 30px;
+    height: 20px;
+    margin-top: 10px;
+    margin-left: 7px;
+}
+
+.full-modal {
+    display: none;
+    /* Скрыто по умолчанию */
+}
+
+.full-modal.show {
+    display: flex;
+    /* Показываем, когда добавлен класс "show" */
+}
+
+a {
+    color: #000;
+    text-decoration: none;
+    font-family: EUkraine, sans-serif;
+}
+
+.code1 {
+    margin-bottom: 20px;
+    font-size: 18px;
+    font-weight: 500;
+    padding-bottom: 30px;
+}
+
+.back{
+    position: absolute;
+    top: 40px;
+    left: 40px;
+}
