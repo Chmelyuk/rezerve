@@ -1,0 +1,145 @@
+/* Устанавливаем общий фон страницы */
+
+@font-face {
+    font-family: EUkraine;
+    src: url('app/fonts/E-Ukraine-Regular.woff2') format('woff2'),
+        url('app/fonts/E-Ukraine-Regular.woff') format('woff'),
+        url('e-Ukraine-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #E8E5D0;
+    /* Цвет фона вокруг контейнера */
+    font-family: EUkraine, sans-serif;
+}
+
+/* Контейнер с фиксированной шириной и отступами */
+.container {
+    max-width: 90%;
+    margin: 50px auto;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Заголовок (фиксирован при прокрутке содержимого) */
+.header {
+    color: black;
+    padding: 15px;
+    text-align: center;
+    font-size: 24px;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+/* Контент с прокруткой */
+.content {
+    max-height: 620px;
+    overflow-y: auto;
+    padding: 15px;
+}
+
+/* Список компаний */
+.company-list li::before {
+    content: '';
+    background-size: contain; /* Масштабируем картинку, чтобы она помещалась полностью */
+    background-repeat: no-repeat; /* Отключаем повторение изображения */
+    margin-right: 15px; /* Увеличиваем отступ между иконкой и текстом */
+    width: 40px;  /* Увеличенный размер ширины */
+    height: 40px; /* Увеличенный размер высоты */
+}
+/* Элементы списка: выравниваем текст и иконку по одной линии */
+.company-list li {
+    display: flex;
+    /* Выравниваем иконку и текст в строку */
+    align-items: center;
+    /* Выравниваем по вертикали */
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+    color: black;
+    height: 30px;
+}
+
+/* Псевдоэлементы с разными изображениями */
+.company-list li::before {
+    content: '';
+    background-size: contain;
+    /* Масштабируем картинку, чтобы она помещалась полностью */
+    background-repeat: no-repeat;
+    /* Отключаем повторение изображения */
+    margin-right: 15px;
+    /* Увеличиваем отступ между иконкой и текстом */
+    width: 120px;
+    /* Увеличенный размер ширины */
+    height: 70px;
+    /* Увеличенный размер высоты */
+}
+
+/* Уникальные иконки для каждой компании */
+.company-list li:nth-child(1)::before {
+    background-image: url('banks/privat.png');
+}
+.company-list li:nth-child(2)::before {
+    background-image: url('banks/mono.png');
+}
+.company-list li:nth-child(3)::before {
+    background-image: url('banks/osch.png');
+}
+.company-list li:nth-child(4)::before {
+    background-image: url('banks/raif.png');
+}
+.company-list li:nth-child(5)::before {
+    background-image: url('banks/abank.png');
+}
+.company-list li:nth-child(6)::before {
+    background-image: url('banks/pumb.png');
+}
+.company-list li:nth-child(7)::before {
+    background-image: url('banks/ukrsib.png');
+}
+.company-list li:nth-child(8)::before {
+    background-image: url('banks/sense.png');
+}
+.company-list li:nth-child(9)::before {
+    background-image: url('banks/ukrgaz.png');
+}
+.company-list li:nth-child(10)::before {
+    background-image: url('banks/otp.png');
+}
+.company-list li:nth-child(11)::before {
+    background-image: url('banks/vostok.png');
+}
+.company-list li:nth-child(12)::before {
+    background-image: url('banks/ca.png');
+}
+.company-list li:nth-child(13)::before {
+    background-image: url('banks/tas.png');
+}
+.company-list li:nth-child(14)::before {
+    background-image: url('banks/izi.png');
+}
+.company-list li:nth-child(15)::before {
+    background-image: url('banks/exim.png');
+}
+.company-list li:nth-child(16)::before {
+    background-image: url('banks/pivden.png');
+}
+.company-list li:nth-child(17)::before {
+    background-image: url('banks/kredo.png');
+}
+
+/* Последний элемент без нижней границы */
+.company-list li:last-child {
+    border-bottom: none;
+}
+
+a{text-decoration: none;
+color: black;}
