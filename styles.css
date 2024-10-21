@@ -2,14 +2,14 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: 'E Ukraine', sans-serif;
+    font-family: EUkraine, sans-serif;
 }
 
 @font-face {
-    font-family: 'E Ukraine';
+    font-family: EUkraine;
     src: url('app/fonts/E-Ukraine-Regular.woff2') format('woff2'),
         url('app/fonts/E-Ukraine-Regular.woff') format('woff'),
-        url('app/fonts/E-Ukraine-Regular.ttf') format('truetype');
+        url('e-Ukraine-Regular.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
@@ -19,6 +19,7 @@ body {
     align-items: center;
     height: 100vh;
     background-color: #E8E5D0;
+    font-family: EUkraine , sans-serif;
 }
 
 .container {
@@ -79,6 +80,7 @@ button {
 
 }
 
+
 button:active {
     background-color: #ddd;
     background-color: #000;
@@ -116,5 +118,5 @@ button.delete {
 a{
     color: #000;
     text-decoration: none;
-    font-family: EUkraine, sans-serif;
+     font-family: EUkraine, sans-serif;
 }
