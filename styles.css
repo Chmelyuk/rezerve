@@ -78,18 +78,6 @@ button {
     
 
 }
-button:hover {
-    width: 60px;
-    height: 60px;
-    font-size: 24px;
-    border: none;
-    border-radius: 50%;
-    background-color:#000 ;
-    cursor: pointer;
-    color: #fff;
-
-
-}
 
 button:active {
     background-color: #ddd;
