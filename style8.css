@@ -1,0 +1,127 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+}
+
+@font-face {
+    font-family: EUkraine;
+    src: url('app/fonts/E-Ukraine-Regular.woff2') format('woff2'),
+        url('app/fonts/E-Ukraine-Regular.woff') format('woff'),
+        url('e-Ukraine-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+body {
+    overflow: hidden;
+        position: fixed;
+        width: 100%;
+        background-color: #e1dfcc;
+        font-family: EUkraine, sans-serif;
+       margin: 0;
+    padding: 0;
+    display: flex;
+    text-decoration: none;
+    height: 100%;
+}
+
+.modal {
+    display: flex;
+    
+    width: 100%;
+    height: 900px;
+}
+
+.modal-content {
+    background-color: #e1dfcc;
+    padding: 40px;
+    border-radius: 10px;
+    text-align: left;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    height: 100%;
+    
+    margin-bottom: 20px;
+}
+
+
+
+h2 {
+    margin-top: 25px;
+    font-size: 24px;
+    color: black;
+    margin-bottom: 40px;
+    
+}
+
+p {
+    font-size: 16px;
+    color: black;
+   
+    
+}
+p span{
+    font-size: 10px;
+    color: black;
+    padding-left: 20%;
+  
+   
+}
+p strong {
+    font-size: 1.px;
+    color: black;
+    padding-left: 10px;
+   
+    text-decoration: underline;
+}
+
+
+
+a{text-decoration: none;
+color: black;}
+
+
+.container {
+    
+    margin: auto;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Заголовок (фиксирован при прокрутке содержимого) */
+.header {
+    color: black;
+    padding: 15px;
+    text-align: center;
+    font-size: 24px;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+/* Контент с прокруткой */
+.content {
+    max-height: 620px;
+  
+    padding: 15px;
+}
+.company-list{
+    width: 90%;
+}
+
+.company-list li {
+    display: flex;
+    /* Выравниваем иконку и текст в строку */
+    align-items: center;
+    /* Выравниваем по вертикали */
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+    color: black;
+    height: 50px;
+}
+

@@ -1,0 +1,73 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+}
+
+@font-face {
+    font-family: EUkraine;
+    src: url('app/fonts/E-Ukraine-Regular.woff2') format('woff2'),
+        url('app/fonts/E-Ukraine-Regular.woff') format('woff'),
+        url('e-Ukraine-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+body {
+    overflow: hidden;
+        position: fixed;
+        width: 100%;
+        background-color: #e1dfcc;
+        font-family: EUkraine, sans-serif;
+       margin: 0;
+    padding: 0;
+    display: flex;
+    text-decoration: none;
+    height: 100%;
+}
+
+
+.modal-content {
+    padding: 20px;
+}
+
+span {
+    color: gray;
+}
+
+p {
+    color: black;
+    margin-bottom: 15px;
+    margin-left: 20px;
+}
+
+.thank-you-button {
+    background-color: #FF9800;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 100px;
+    width: 250px;
+    height: 50px;
+    position: fixed;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+h2{
+   
+            margin-top: 25px;
+            font-size: 24px;
+            color: black;
+            margin-bottom: 40px;
+    
+        
+}
