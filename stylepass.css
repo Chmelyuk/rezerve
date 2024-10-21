@@ -25,6 +25,7 @@ body {
 
 .container {
     text-align: center;
+    margin-top: 5px;
 
 
 }
@@ -38,7 +39,7 @@ body {
 }
 
 .pin-code {
-    margin-top: 190px;
+    margin-top: 140px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -135,6 +136,6 @@ a {
 
 .back{
     position: absolute;
-    top: 40px;
-    left: 40px;
+    top: 30px;
+    left: 30px;
 }
