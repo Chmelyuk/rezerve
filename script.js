@@ -151,3 +151,27 @@ window.addEventListener('click', (event) => {
         burgerModal.style.display = 'none';
     }
 });
+
+// Код для копирования в буфер обмена
+            const copyLink = document.querySelector('.copy-link');
+            const statusMessage = document.querySelector('.status-message');
+            const code = "8556E824-7E16-4C51-9B96-A10EFC375F50";
+
+            // Обработчик нажатия на кнопку копирования
+            copyLink.addEventListener('click', (event) => {
+                event.preventDefault(); // Предотвращаем переход по ссылке
+
+                // Копируем код в буфер обмена
+                navigator.clipboard.writeText(code).then(() => {
+                    // Отображаем символ "✔️"
+                    statusMessage.textContent = "✔️";
+                    
+
+                    // Убираем сообщение через 3 секунды
+                    setTimeout(() => {
+                        statusMessage.textContent = "";
+                    }, 3000);
+                }).catch(err => {
+                    console.error("Ошибка при копировании: ", err);
+                });
+            });
