@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Document</title>
+    <link rel="stylesheet" href="style10.css">
+    <link rel="manifest" href="manifest.json">
+   
+</head>
+
+<body>
+
+    <div id="update-modal" class="modal">
+        <div class="modal-content">
+            <div class="update-message">
+
+                <a href="redact.html">
+                    <h2>&#8592</h2>
+                </a>
+                <h2>Заповніть та<br>перевірте дані</h2>
+                <p><span>ПІБ</span></p>
+                <p>Чмелюк Дмитро Васильович</p>
+                <p><span>Дата народження</span></p>
+                <p>16.04.1996</p>
+                <p><span>РНОКПП</span></p>
+                <p>3517008950</p>
+
+                <!-- Добавлены поля ввода -->
+                <p><span>ТЦК, який здійснив призов</span></p>
+                <input type="text" id="input1" placeholder="Введіть дані ТЦК">
+                <p><span>Номер військової частини</span></p>
+                <input type="text" id="input2" placeholder="Введіть номер">
+
+                <div class="container">
+                    <a href="requestmil.html">
+                        <button class="thank-you-button" id="submitButton" disabled>Зрозуміло</button>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+ <script>
+        const input1 = document.getElementById('input1');
+        const input2 = document.getElementById('input2');
+        const submitButton = document.getElementById('submitButton');
+
+        function checkInputs() {
+            // Проверяем, заполнены ли оба поля
+            if (input1.value.length > 1 && input2.value.length > 5) {
+                // Если оба поля заполнены, активируем кнопку
+                submitButton.style.backgroundColor = '#FF9800'; // Цвет активной кнопки
+                submitButton.style.cursor = 'pointer'; // Меняем курсор
+                submitButton.disabled = false; // Активируем кнопку
+            } else {
+                // Если хотя бы одно поле пустое
+                submitButton.style.backgroundColor = '#bcbba9'; // Цвет кнопки по умолчанию
+                submitButton.style.cursor = 'not-allowed'; // Курсор неактивной кнопки
+                submitButton.disabled = true; // Деактивируем кнопку
+            }
+        }
+
+        // Добавляем обработчики событий для проверки ввода
+        input1.addEventListener('input', checkInputs);
+        input2.addEventListener('input', checkInputs);
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,80 @@
+
+* {
+     margin: 0;
+     padding: 0;
+     box-sizing: border-box;
+ }
+
+ @font-face {
+     font-family: EUkraine;
+     src: url('app/fonts/E-Ukraine-Regular.woff2') format('woff2'),
+         url('app/fonts/E-Ukraine-Regular.woff') format('woff'),
+         url('e-Ukraine-Regular.ttf') format('truetype');
+     font-weight: normal;
+     font-style: normal;
+ }
+
+ body {
+     overflow: hidden;
+     position: fixed;
+     width: 100%;
+     background-color: #e1dfcc;
+     font-family: EUkraine, sans-serif;
+     margin: 0;
+     padding: 0;
+     display: flex;
+     text-decoration: none;
+     height: 100%;
+ }
+
+ .modal-content {
+     padding: 20px;
+ }
+
+ span {
+     color: gray;
+    font-size: 12px;
+ }
+
+ p {
+     color: black;
+     margin-bottom: 15px;
+     margin-left: 20px;
+     font-size: 16px;
+ }
+
+ input {
+     display: block;
+     margin: 10px 20px;
+     padding: 10px;
+     width: 100%;
+     font-size: 16px;
+ }
+
+ .thank-you-button {
+    background-color: #bcbba9;
+     border: none;
+     color: black;
+     padding: 10px 20px;
+     font-size: 16px;
+     cursor: not-allowed;
+     border-radius: 100px;
+     width: 250px;
+     height: 50px;
+     position: fixed;
+     bottom: 50px;
+     left: 50%;
+     transform: translateX(-50%);
+ }
+
+ a {
+     text-decoration: none;
+     color: black;
+ }
+
+ h2 {
+     margin-top: 25px;
+     font-size: 24px;
+     color: black;
+     margin-bottom: 40px;
+ }
