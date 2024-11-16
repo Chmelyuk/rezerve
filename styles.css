@@ -20,6 +20,7 @@ body {
     height: 100vh;
     background-color: #E8E5D0;
     font-family: EUkraine , sans-serif;
+     position: fixed;
 }
 
 .container {
