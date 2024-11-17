@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Document</title>
+    <link rel="stylesheet" href="styletypedef.css">
+    <link rel="manifest" href="manifest.json">
+</head>
+
+<body>
+    <div id="update-modal" class="modal">
+        <div class="modal-content">
+            <div class="update-message">
+                <a href="deferment.html">
+                    <h2>&#8592;</h2>
+                </a>
+                <h2>Виберіть підставу<br>для відстрочки</h2>
+
+                <div class="container">
+                    <form id="selection-form-disability">
+                        <div class="content">
+                            <label class="radio-label">
+                                <input type="radio" name="reason" value="disability">
+                                Людина з інвалідністю
+                            </label>
+                            <p id="disability-text" class="description" style="display: none;">
+                                Особа з інвалідністю може мати право на відстрочку відповідно до чинного законодавства.
+                            </p>
+                        </div>
+                    </form>
+                </div>
+                <div class="container">
+                    <form id="selection-form-student">
+                        <div class="content">
+                            <label class="radio-label">
+                                <input type="radio" name="reason" value="student">
+                                Студент, аспірант
+                            </label>
+                            <p id="student-text" class="description">
+                                Якщо ви послідовно навчаєтесь на денній або дуальній формі. Дані про це мають бути у
+                                Єдиній
+                                державній електронній базі з питань освіти.
+                            </p>
+                        </div>
+                </div>
+            </div>
+            <button class="thank-you-button">Далі</button>
+            <script>
+                document.addEventListener('DOMContentLoaded', function () {
+                        const disabilityText = document.getElementById('disability-text');
+                        const studentText = document.getElementById('student-text');
+                        const thankYouButton = document.querySelector('.thank-you-button');
+
+                        // Получаем все радиокнопки с одинаковым name
+                        const radioButtons = document.querySelectorAll('input[name="reason"]');
+
+                        // Функция для обработки изменения состояния радиокнопок
+                        function handleFormChange(event) {
+                            // Скрыть все описания
+                            disabilityText.style.display = 'none';
+                            studentText.style.display = 'none';
+
+                            // Проверяем, какая кнопка выбрана, и показываем соответствующий текст
+                            if (event.target.value === 'disability') {
+                                disabilityText.style.display = 'block';
+                            } else if (event.target.value === 'student') {
+                                studentText.style.display = 'block';
+                            }
+
+                            // Проверяем, выбрана ли какая-либо радиокнопка
+                            const isAnyRadioChecked = Array.from(radioButtons).some(radio => radio.checked);
+
+                            // Меняем класс кнопки в зависимости от состояния радиокнопок
+                            if (isAnyRadioChecked) {
+                                thankYouButton.classList.add('active');
+                            } else {
+                                thankYouButton.classList.remove('active');
+                            }
+
+                            // Снимаем активность со всех радиокнопок (чтобы они не "зависали")
+                            radioButtons.forEach((radio) => {
+                                if (radio !== event.target) {
+                                    radio.checked = false; // Снимаем отметку
+                                }
+                            });
+                        }
+
+                        // Навешиваем обработчик события на каждую радиокнопку
+                        radioButtons.forEach((radio) => {
+                            radio.addEventListener('change', handleFormChange);
+                        });
+
+                        // Обработчик для кнопки "Далі"
+                        thankYouButton.addEventListener('click', function (event) {
+                            event.preventDefault(); // Предотвращаем стандартное поведение формы
+
+                            const selectedRadio = document.querySelector('input[name="reason"]:checked');
+                            if (selectedRadio) {
+                                if (selectedRadio.value === 'disability') {
+                                    window.location.href = 'redactdatadef.html';
+                                } else if (selectedRadio.value === 'student') {
+                                    window.location.href = 'redactdatadef.html';
+                                }
+                            }
+                        });
+                    }); 
+            </script>
+</body>
+
+</html>

@@ -1,0 +1,189 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+@font-face {
+    font-family: EUkraine;
+    src: url('app/fonts/E-Ukraine-Regular.woff2') format('woff2'),
+        url('app/fonts/E-Ukraine-Regular.woff') format('woff'),
+        url('e-Ukraine-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+    background-color: #e1dfcc;
+    font-family: EUkraine, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    text-decoration: none;
+    height: 100%;
+}
+
+.modal {
+    display: flex;
+
+    width: 100%;
+    height: 900px;
+}
+
+.modal-content {
+    
+    padding: 40px;
+    border-radius: 10px;
+    text-align: left;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    height: 100%;
+
+    margin-bottom: 20px;
+}
+
+
+
+h2 {
+    margin-top: 25px;
+    font-size: 24px;
+    color: black;
+    margin-bottom: 40px;
+
+}
+
+p {
+    font-size: 16px;
+    color: black;
+
+
+}
+
+p span {
+    font-size: 10px;
+    color: black;
+    padding-left: 20%;
+
+
+}
+
+p strong {
+    font-size: 1.px;
+    color: black;
+    padding-left: 10px;
+
+    text-decoration: underline;
+}
+
+
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+
+.container {
+
+    margin: auto;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+/* Заголовок (фиксирован при прокрутке содержимого) */
+.header {
+    color: black;
+    padding: 15px;
+    text-align: center;
+    font-size: 24px;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+/* Контент с прокруткой */
+.content {
+    max-height: 620px;
+
+    padding: 15px;
+}
+
+.company-list {
+    width: 90%;
+}
+
+.company-list li {
+    display: flex;
+    /* Выравниваем иконку и текст в строку */
+    align-items: center;
+    /* Выравниваем по вертикали */
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+    color: black;
+    height: 50px;
+}
+
+
+.details-text {
+    font-size: 16px;
+    color: black;
+    line-height: 1.5;
+}
+
+.radio-label {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    margin-bottom: 5px;
+    cursor: pointer;
+    color: black;
+}
+
+.radio-label input {
+    margin-right: 10px;
+}
+
+.description {
+    margin-left: 25px;
+    /* Сместить текст немного вправо для читаемости */
+    font-size: 14px;
+    color: gray;
+    /* Изменён цвет текста на серый */
+    background: white;
+    /* Изменён цвет фона на белый */
+    padding: 5px 10px;
+    border-radius: 8px;
+    display: none;
+    /* Скрыто по умолчанию */
+}
+.thank-you-button {
+    background-color: #bcbba9;
+    /* Серый цвет по умолчанию */
+    border: none;
+    color: black;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: not-allowed;
+    /* Неактивный курсор */
+    border-radius: 100px;
+    width: 250px;
+    height: 50px;
+    margin-top: 50%;
+    margin-left: 10%;
+}
+
+.thank-you-button.active {
+    background-color: #FF9800;
+    /* Оранжевый цвет, когда активна */
+    cursor: pointer;
+    /* Указатель курсора */
+}
