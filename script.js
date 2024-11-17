@@ -1,3 +1,7 @@
+<!-- Подключаем библиотеку jsQR -->
+<script src="https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.js"></script>
+
+<script>
 // Получаем элементы
 const flipContainer = document.getElementById('flip-container');
 const dotsButton = document.querySelector('.dots');
@@ -22,14 +26,17 @@ modal.addEventListener('click', (e) => {
         modal.style.display = 'none';
     }
 });
+
 scanButton.addEventListener('click', startCamera);
 
-// Функция для включения камеры и захвата фото
+// Функция для включения камеры и сканирования QR-кода
 async function startCamera() {
     try {
+        // Запрашиваем доступ к камере
         const stream = await navigator.mediaDevices.getUserMedia({
             video: { facingMode: { exact: "environment" } } // Используем заднюю камеру
         });
+
         const videoElement = document.createElement('video');
         videoElement.srcObject = stream;
         videoElement.play();
@@ -44,33 +51,44 @@ async function startCamera() {
         videoElement.style.zIndex = '1000'; // Чтобы видео было поверх остальных элементов
         videoElement.style.objectFit = 'cover'; // Заполняем экран
 
-        // Захват изображения после короткой задержки
-        setTimeout(async () => {
-            const canvas = document.createElement('canvas');
+        // Функция для сканирования QR-кодов
+        const canvas = document.createElement('canvas');
+        const context = canvas.getContext('2d');
+
+        function scanQRCode() {
             canvas.width = videoElement.videoWidth;
             canvas.height = videoElement.videoHeight;
-            const context = canvas.getContext('2d');
             context.drawImage(videoElement, 0, 0, canvas.width, canvas.height);
 
-            // Остановить поток видео
+            const imageData = context.getImageData(0, 0, canvas.width, canvas.height);
+            const code = jsQR(imageData.data, canvas.width, canvas.height, {
+                inversionAttempts: "dontInvert"
+            });
+
+            if (code) {
+                console.log("QR-код найден:", code.data);
+                alert("QR-код найден: " + code.data); // Здесь можно сделать что-то полезное с данными QR-кода
+                // Останавливаем поток камеры после сканирования
+                stopCamera();
+            }
+        }
+
+        // Интервал для регулярного сканирования
+        const scanInterval = setInterval(scanQRCode, 100);
+
+        // Функция для остановки камеры
+        function stopCamera() {
+            clearInterval(scanInterval);
             stream.getTracks().forEach(track => track.stop());
             videoElement.remove();
-
-            // Получаем данные изображения
-            const imageData = canvas.toDataURL('image/png');
-
-            // Здесь можно добавить код для обработки изображения и сканирования QR-кода
-            console.log('Фото захвачено:', imageData);
-
-        }, 20000); // Задержка 3 секунды перед захватом фото
+        }
 
     } catch (error) {
         console.error('Ошибка доступа к камере:', error);
     }
 }
-// --- Логика для бесконечной анимации ленты ---
 
-// Клонируем элементы для бесшовной анимации
+// --- Логика для бесконечной анимации ленты ---
 const items = itemsWrap.children;
 const itemsArray = Array.from(items);
 
@@ -79,15 +97,12 @@ itemsArray.forEach(item => {
     itemsWrap.appendChild(clone);
 });
 
-// Определяем размеры и длительность анимации
-const itemWidth = items[0].getBoundingClientRect().width; // Ширина первого элемента
-const totalWidth = itemWidth * itemsWrap.children.length; // Общая ширина всех элементов
-const animationDuration = totalWidth / 50; // Длительность анимации (чем больше, тем медленнее)
+const itemWidth = items[0].getBoundingClientRect().width;
+const totalWidth = itemWidth * itemsWrap.children.length;
+const animationDuration = totalWidth / 50; 
 
-// Устанавливаем параметры анимации
 itemsWrap.style.width = `${totalWidth}px`;
 itemsWrap.style.animationDuration = `${animationDuration}s`;
-
 
 dotsButton.addEventListener('click', () => {
     modal.style.display = 'flex';
@@ -105,30 +120,27 @@ modal.addEventListener('click', (e) => {
     }
 });
 
-// Получаем элементы
+// Открытие полноэкранного модального окна
 const fullModal = document.getElementById('full-modal');
 const fullModalContent = document.querySelector('.full-modal-content');
 const closeButton = document.querySelector('.close-button');
 const fullInfoLink = document.querySelector('#myElement');
 
-// Открытие полноэкранного модального окна
 fullInfoLink.addEventListener('click', (event) => {
-    event.preventDefault(); // Предотвращаем переход по ссылке
+    event.preventDefault();
     fullModal.classList.add('show');
-    document.body.classList.add('modal-open'); // Отключаем прокрутку
+    document.body.classList.add('modal-open');
 });
 
-// Закрытие окна при нажатии на кнопку "×"
 closeButton.addEventListener('click', () => {
     fullModal.classList.remove('show');
-    document.body.classList.remove('modal-open'); // Включаем прокрутку
+    document.body.classList.remove('modal-open');
 });
 
-// Закрытие окна при нажатии вне контента
 fullModal.addEventListener('click', (event) => {
     if (event.target === fullModal) {
         fullModal.classList.remove('show');
-        document.body.classList.remove('modal-open'); // Включаем прокрутку
+        document.body.classList.remove('modal-open');
     }
 });
 
@@ -145,33 +157,27 @@ closeBurgerButton.addEventListener('click', () => {
     burgerModal.style.display = 'none';
 });
 
-// Закрытие окна при клике вне его
 window.addEventListener('click', (event) => {
     if (event.target === burgerModal) {
         burgerModal.style.display = 'none';
     }
 });
 
-   // Код для копирования в буфер обмена
-            const copyLink = document.querySelector('.copy-link');
-            const statusMessage = document.querySelector('.status-message');
-            const code = "8556E824-7E16-4C51-9B96-A10EFC375F50";
+// Код для копирования в буфер обмена
+const copyLink = document.querySelector('.copy-link');
+const statusMessage = document.querySelector('.status-message');
+const code = "8556E824-7E16-4C51-9B96-A10EFC375F50";
 
-            // Обработчик нажатия на кнопку копирования
-            copyLink.addEventListener('click', (event) => {
-                event.preventDefault(); // Предотвращаем переход по ссылке
+copyLink.addEventListener('click', (event) => {
+    event.preventDefault();
 
-                // Копируем код в буфер обмена
-                navigator.clipboard.writeText(code).then(() => {
-                    // Отображаем символ "✔️"
-                    statusMessage.textContent = "✔️";
-                    
-
-                    // Убираем сообщение через 3 секунды
-                    setTimeout(() => {
-                        statusMessage.textContent = "";
-                    }, 3000);
-                }).catch(err => {
-                    console.error("Ошибка при копировании: ", err);
-                });
-            });
+    navigator.clipboard.writeText(code).then(() => {
+        statusMessage.textContent = "✔️";
+        setTimeout(() => {
+            statusMessage.textContent = "";
+        }, 3000);
+    }).catch(err => {
+        console.error("Ошибка при копировании: ", err);
+    });
+});
+</script>
