@@ -65,14 +65,15 @@ async function startCamera() {
         qrCodeInfo.style.zIndex = '2000'; // Чтобы текст был поверх всех элементов
         qrCodeInfo.style.borderRadius = '8px';
         qrCodeInfo.style.textAlign = 'center';
-        qrCodeInfo.style.maxHeight = '90vh'; // 90% от высоты экрана
-        qrCodeInfo.style.overflowY = 'auto';
-        // Устанавливаем ширину окна с текстом равной ширине экрана устройства
-        qrCodeInfo.style.width = '90vw';  // 90% от ширины экрана
-        qrCodeInfo.style.maxWidth = '100%'; // Убедимся, что ширина не превышает 100% экрана
-        qrCodeInfo.style.wordWrap = 'break-word';  // Перенос слов в случае длинных строк
 
-        // Создаем кнопку "Закрыть"
+        // Устанавливаем максимальную высоту 90% от высоты экрана
+        qrCodeInfo.style.maxHeight = '90vh'; // 90% от высоты экрана
+        qrCodeInfo.style.overflowY = 'auto';  // Добавляем прокрутку по вертикали, если контент превышает высоту
+        qrCodeInfo.style.width = '90vw';      // 90% от ширины экрана
+        qrCodeInfo.style.maxWidth = '100%';   // Убедимся, что ширина не превышает 100% экрана
+        qrCodeInfo.style.wordWrap = 'break-word'; // Перенос слов в случае длинных строк
+
+        // Добавляем кнопку "Закрыть"
         const closeButton = document.createElement('button');
         closeButton.id = 'closeButton'; // Присваиваем id
         closeButton.textContent = "Закрыть";
@@ -224,17 +225,16 @@ window.addEventListener('click', (event) => {
 // Код для копирования в буфер обмена
 const copyLink = document.querySelector('.copy-link');
 const statusMessage = document.querySelector('.status-message');
-const code = "8556E824-7E16-4C51-9B96-A10EFC375F50";
+const code = "8556E824-7E16-4C51-9B96-A10EFC6BCE0C";
 
-copyLink.addEventListener('click', (event) => {
-    event.preventDefault();
-
+copyLink.addEventListener('click', () => {
     navigator.clipboard.writeText(code).then(() => {
-        statusMessage.textContent = "✔️";
+        statusMessage.textContent = 'Скопировано в буфер обмена!';
         setTimeout(() => {
-            statusMessage.textContent = "";
-        }, 3000);
-    }).catch(err => {
-        console.error("Ошибка при копировании: ", err);
+            statusMessage.textContent = '';
+        }, 2000);
+    }).catch((err) => {
+        statusMessage.textContent = 'Ошибка при копировании!';
+        console.error('Ошибка при копировании: ', err);
     });
 });
