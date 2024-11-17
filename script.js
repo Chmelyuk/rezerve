@@ -65,6 +65,11 @@ async function startCamera() {
         qrCodeInfo.style.borderRadius = '8px';
         qrCodeInfo.style.textAlign = 'center';
 
+        // Устанавливаем ширину окна с текстом равной ширине экрана устройства
+        qrCodeInfo.style.width = '90vw';  // 90% от ширины экрана
+        qrCodeInfo.style.maxWidth = '100%'; // Убедимся, что ширина не превышает 100% экрана
+        qrCodeInfo.style.wordWrap = 'break-word';  // Перенос слов в случае длинных строк
+
         function scanQRCode() {
             canvas.width = videoElement.videoWidth;
             canvas.height = videoElement.videoHeight;
