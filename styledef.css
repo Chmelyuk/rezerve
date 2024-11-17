@@ -1,0 +1,102 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+}
+
+@font-face {
+    font-family: EUkraine;
+    src: url('app/fonts/E-Ukraine-Regular.woff2') format('woff2'),
+        url('app/fonts/E-Ukraine-Regular.woff') format('woff'),
+        url('e-Ukraine-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+body {
+    overflow: hidden;
+        position: fixed;
+        width: 100%;
+        background-color: #e1dfcc;
+        font-family: EUkraine, sans-serif;
+       margin: 0;
+    padding: 0;
+   
+
+    
+    height: 100%;
+}
+
+.header-container{
+    margin-top: 25px;
+    padding-left: 25px;
+    margin-bottom: 20px;
+
+}
+h2 {
+    margin: 0;
+    font-size: 24px;
+    color: black;
+    font-weight: 600;
+    padding-top: 10px;
+    letter-spacing: 1px;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+    font-size: 25px;
+    padding-top:  55px;
+}
+
+.text{
+    font-size: 15px;
+    color: black;
+    padding-left: 25px;
+    text-align: left;
+    margin-bottom: 10px;
+}
+
+.list{
+    font-size: 15px;
+        color: black;
+        padding-left: 25px;
+        text-align: left;
+        margin-bottom: 10px;
+        margin-left: 25px;
+        
+}
+.list li{
+    padding: 5px;
+} 
+
+.info{
+    font-size: 15px;
+        color: black;
+        padding-left: 25px;
+        text-align: left;
+        margin-bottom: 10px;
+}
+
+.info p{
+    padding: 5px;
+}
+
+.thank-you-button {
+    background-color: #FF9800;
+    border: none;
+    color: black;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 100px;
+    width: 250px;
+    height: 50px;
+    margin-top: 40px;
+    margin-left: 20%;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
