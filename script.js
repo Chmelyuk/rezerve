@@ -60,7 +60,7 @@ async function startCamera() {
         qrCodeInfo.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
         qrCodeInfo.style.color = 'white';
         qrCodeInfo.style.padding = '20px';
-        qrCodeInfo.style.fontSize = '20px';
+        qrCodeInfo.style.fontSize = '14px';
         qrCodeInfo.style.zIndex = '2000'; // Чтобы текст был поверх всех элементов
         qrCodeInfo.style.borderRadius = '8px';
         qrCodeInfo.style.textAlign = 'center';
