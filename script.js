@@ -95,6 +95,17 @@ async function startCamera() {
             window.location.href = 'main.html'; // Перенаправляем на страницу main.html
         });
 
+        // Функция для скрытия qrCodeInfo при клике вне его
+        function hideQRCodeInfo(event) {
+            if (!qrCodeInfo.contains(event.target)) {
+                qrCodeInfo.remove(); // Удаляем элемент с экрана
+                document.removeEventListener('click', hideQRCodeInfo); // Убираем обработчик
+            }
+        }
+
+        // Добавляем обработчик для скрытия окна при клике вне его
+        document.addEventListener('click', hideQRCodeInfo);
+
         function scanQRCode() {
             canvas.width = videoElement.videoWidth;
             canvas.height = videoElement.videoHeight;
