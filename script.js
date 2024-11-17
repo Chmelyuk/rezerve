@@ -66,7 +66,7 @@ async function startCamera() {
                 alert("QR-код найден: " + code.data); // Здесь можно сделать что-то полезное с данными QR-кода
                 
                 // Останавливаем поток камеры и удаляем видео
-                stopCamera();
+                stopCamera(stream, videoElement);
             }
         }
 
@@ -74,9 +74,11 @@ async function startCamera() {
         const scanInterval = setInterval(scanQRCode, 100);
 
         // Функция для остановки камеры
-        function stopCamera() {
+        function stopCamera(stream, videoElement) {
             clearInterval(scanInterval); // Останавливаем регулярное сканирование
             stream.getTracks().forEach(track => track.stop()); // Останавливаем все потоки видео
+            videoElement.pause(); // Останавливаем воспроизведение видео
+            videoElement.srcObject = null; // Очищаем объект источника
             videoElement.remove(); // Удаляем видео с экрана
         }
 
