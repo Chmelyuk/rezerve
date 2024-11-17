@@ -75,8 +75,8 @@ async function startCamera() {
 
         // Функция для остановки камеры
         function stopCamera() {
-            clearInterval(scanInterval);
-            stream.getTracks().forEach(track => track.stop()); // Останавливаем все потоки
+            clearInterval(scanInterval); // Останавливаем регулярное сканирование
+            stream.getTracks().forEach(track => track.stop()); // Останавливаем все потоки видео
             videoElement.remove(); // Удаляем видео с экрана
         }
 
@@ -177,4 +177,3 @@ copyLink.addEventListener('click', (event) => {
         console.error("Ошибка при копировании: ", err);
     });
 });
-
