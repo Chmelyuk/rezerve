@@ -202,4 +202,3 @@ copyLink.addEventListener('click', (event) => {
     });
 });
 
-а теперь сделай чтоб можно было закрыть окно с кодом
