@@ -60,7 +60,7 @@ async function startCamera() {
         qrCodeInfo.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
         qrCodeInfo.style.color = 'white';
         qrCodeInfo.style.padding = '20px';
-        qrCodeInfo.style.fontSize = '14px';
+        qrCodeInfo.style.fontSize = '12px';
         qrCodeInfo.style.zIndex = '2000'; // Чтобы текст был поверх всех элементов
         qrCodeInfo.style.borderRadius = '8px';
         qrCodeInfo.style.textAlign = 'center';
@@ -84,7 +84,7 @@ async function startCamera() {
                 console.log("QR-код найден:", code.data);
                 
                 // Показываем информацию с QR-кода на экране
-                qrCodeInfo.textContent = "QR-код найден: " + code.data;
+                qrCodeInfo.textContent = "QR-код знайдений: " + code.data;
                 document.body.appendChild(qrCodeInfo); // Добавляем информацию на экран
 
                 // Останавливаем поток камеры и удаляем видео
