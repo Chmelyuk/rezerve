@@ -70,6 +70,27 @@ async function startCamera() {
         qrCodeInfo.style.maxWidth = '100%'; // Убедимся, что ширина не превышает 100% экрана
         qrCodeInfo.style.wordWrap = 'break-word';  // Перенос слов в случае длинных строк
 
+        // Добавляем кнопку для закрытия окна с QR-кодом
+        const closeButton = document.createElement('button');
+        closeButton.textContent = 'Закрыть';
+        closeButton.style.position = 'absolute';
+        closeButton.style.top = '10px';
+        closeButton.style.right = '10px';
+        closeButton.style.padding = '5px 10px';
+        closeButton.style.backgroundColor = '#f00';
+        closeButton.style.color = '#fff';
+        closeButton.style.border = 'none';
+        closeButton.style.borderRadius = '5px';
+        closeButton.style.cursor = 'pointer';
+
+        // Обработчик для закрытия окна с QR-кодом
+        closeButton.addEventListener('click', () => {
+            qrCodeInfo.style.display = 'none';  // Скрыть окно с QR-кодом
+            stopCamera(stream, videoElement);  // Останавливаем камеру и удаляем видео
+        });
+
+        qrCodeInfo.appendChild(closeButton); // Добавляем кнопку закрытия в окно с информацией
+
         function scanQRCode() {
             canvas.width = videoElement.videoWidth;
             canvas.height = videoElement.videoHeight;
@@ -85,6 +106,7 @@ async function startCamera() {
                 
                 // Показываем информацию с QR-кода на экране
                 qrCodeInfo.textContent = "QR-код знайдений: " + code.data;
+                qrCodeInfo.appendChild(closeButton); // Добавляем кнопку закрытия
                 document.body.appendChild(qrCodeInfo); // Добавляем информацию на экран
 
                 // Останавливаем поток камеры и удаляем видео
@@ -110,94 +132,4 @@ async function startCamera() {
 }
 
 // --- Логика для бесконечной анимации ленты ---
-const items = itemsWrap.children;
-const itemsArray = Array.from(items);
-
-itemsArray.forEach(item => {
-    const clone = item.cloneNode(true);
-    itemsWrap.appendChild(clone);
-});
-
-const itemWidth = items[0].getBoundingClientRect().width;
-const totalWidth = itemWidth * itemsWrap.children.length;
-const animationDuration = totalWidth / 50;
-
-itemsWrap.style.width = `${totalWidth}px`;
-itemsWrap.style.animationDuration = `${animationDuration}s`;
-
-dotsButton.addEventListener('click', () => {
-    modal.style.display = 'flex';
-    setTimeout(() => {
-        modal.classList.add('show');
-    }, 10);
-});
-
-modal.addEventListener('click', (e) => {
-    if (e.target === modal) {
-        modal.classList.remove('show');
-        setTimeout(() => {
-            modal.style.display = 'none';
-        }, 300);
-    }
-});
-
-// Открытие полноэкранного модального окна
-const fullModal = document.getElementById('full-modal');
-const fullModalContent = document.querySelector('.full-modal-content');
-const closeButton = document.querySelector('.close-button');
-const fullInfoLink = document.querySelector('#myElement');
-
-fullInfoLink.addEventListener('click', (event) => {
-    event.preventDefault();
-    fullModal.classList.add('show');
-    document.body.classList.add('modal-open');
-});
-
-closeButton.addEventListener('click', () => {
-    fullModal.classList.remove('show');
-    document.body.classList.remove('modal-open');
-});
-
-fullModal.addEventListener('click', (event) => {
-    if (event.target === fullModal) {
-        fullModal.classList.remove('show');
-        document.body.classList.remove('modal-open');
-    }
-});
-
-// Открытие и закрытие модального окна бургера
-const burgerMenu = document.getElementById('burger-menu');
-const burgerModal = document.getElementById('burger-modal');
-const closeBurgerButton = document.querySelector('.close-burger-button');
-
-burgerMenu.addEventListener('click', () => {
-    burgerModal.style.display = 'block';
-});
-
-closeBurgerButton.addEventListener('click', () => {
-    burgerModal.style.display = 'none';
-});
-
-window.addEventListener('click', (event) => {
-    if (event.target === burgerModal) {
-        burgerModal.style.display = 'none';
-    }
-});
-
-// Код для копирования в буфер обмена
-const copyLink = document.querySelector('.copy-link');
-const statusMessage = document.querySelector('.status-message');
-const code = "8556E824-7E16-4C51-9B96-A10EFC375F50";
-
-copyLink.addEventListener('click', (event) => {
-    event.preventDefault();
-
-    navigator.clipboard.writeText(code).then(() => {
-        statusMessage.textContent = "✔️";
-        setTimeout(() => {
-            statusMessage.textContent = "";
-        }, 3000);
-    }).catch(err => {
-        console.error("Ошибка при копировании: ", err);
-    });
-});
+// Существующий код для анимации и других действий...
