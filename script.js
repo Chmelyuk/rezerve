@@ -50,6 +50,20 @@ async function startCamera() {
         // Функция для сканирования QR-кодов
         const canvas = document.createElement('canvas');
         const context = canvas.getContext('2d');
+        
+        // Элемент для отображения информации QR-кода
+        const qrCodeInfo = document.createElement('div');
+        qrCodeInfo.style.position = 'fixed';
+        qrCodeInfo.style.top = '50%';
+        qrCodeInfo.style.left = '50%';
+        qrCodeInfo.style.transform = 'translate(-50%, -50%)';
+        qrCodeInfo.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
+        qrCodeInfo.style.color = 'white';
+        qrCodeInfo.style.padding = '20px';
+        qrCodeInfo.style.fontSize = '20px';
+        qrCodeInfo.style.zIndex = '2000'; // Чтобы текст был поверх всех элементов
+        qrCodeInfo.style.borderRadius = '8px';
+        qrCodeInfo.style.textAlign = 'center';
 
         function scanQRCode() {
             canvas.width = videoElement.videoWidth;
@@ -63,8 +77,11 @@ async function startCamera() {
 
             if (code) {
                 console.log("QR-код найден:", code.data);
-                alert("QR-код найден: " + code.data); // Здесь можно сделать что-то полезное с данными QR-кода
                 
+                // Показываем информацию с QR-кода на экране
+                qrCodeInfo.textContent = "QR-код найден: " + code.data;
+                document.body.appendChild(qrCodeInfo); // Добавляем информацию на экран
+
                 // Останавливаем поток камеры и удаляем видео
                 stopCamera(stream, videoElement);
             }
@@ -73,12 +90,12 @@ async function startCamera() {
         // Интервал для регулярного сканирования
         const scanInterval = setInterval(scanQRCode, 100);
 
-        // Функция для остановки камеры
+        // Функция для остановки камеры и удаления видео
         function stopCamera(stream, videoElement) {
             clearInterval(scanInterval); // Останавливаем регулярное сканирование
-            stream.getTracks().forEach(track => track.stop()); // Останавливаем все потоки видео
             videoElement.pause(); // Останавливаем воспроизведение видео
-            videoElement.srcObject = null; // Очищаем объект источника
+            videoElement.srcObject = null; // Очищаем источник видео
+            stream.getTracks().forEach(track => track.stop()); // Останавливаем все потоки видео
             videoElement.remove(); // Удаляем видео с экрана
         }
 
