@@ -289,13 +289,13 @@ a {
     background-color: white;
     padding: 20px;
     border-radius: 8px;
-    width: 90%;
-    max-width: 400px;
+    width: 95%;
+    max-width: 450px;
     text-align: center;
     z-index: 2000;
     position: fixed;
         top: 550px;
-        left: 5%;
+        left: 2,5%;
         transform: translateY(100%);
             transition: transform 0.3s ease-out;
             text-align: left;
@@ -318,6 +318,12 @@ a {
 
 
 }
+li a {
+    display: inline-block;
+    /* Убедиться, что элемент занимает только одну строчку */
+    white-space: nowrap;
+    /* Запретить перенос текста */
+}
 
 .modal-content ul li {
     display: flex;
@@ -334,17 +340,17 @@ a {
 }
 .modal-content ul li:nth-child(1)::before {
     content: url('I.png');
-    margin-right: 5px;
+    margin-right: -5px;
         vertical-align: middle;
       
         transform: scale(0.4);
         display: inline-block;
-        padding-right: 10;
+        
 }
 
 .modal-content ul li:nth-child(2)::before {
     content: url('Doc.png');
-    margin-right: 20px;
+    margin-right: 10px;
     vertical-align: middle;
     margin-left: 15px;
     transform: scale(0.4);
@@ -354,7 +360,7 @@ a {
 
 .modal-content ul li:nth-child(3)::before {
     content: url('Recover.png');
-    margin-right: 15px;
+    margin-right: 5px;
         vertical-align: middle;
         margin-left: 10px;
         transform: scale(0.4);
@@ -363,8 +369,17 @@ a {
 }
 
 .modal-content ul li:nth-child(4)::before {
+    content: url('req.png');
+    margin-right: 0px;
+    vertical-align: middle;
+    margin-left: 5px;
+    transform: scale(0.4);
+    display: inline-block;
+   
+}
+.modal-content ul li:nth-child(5)::before {
     content: url('symbol.png');
-    margin-right: 10px;
+    margin-right: 0px;
         vertical-align: middle;
         margin-left: 5px;
         transform: scale(0.4);
