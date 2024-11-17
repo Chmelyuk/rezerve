@@ -76,7 +76,7 @@ async function startCamera() {
         // Добавляем кнопку "Закрыть"
         const closeButton = document.createElement('button');
         closeButton.id = 'closeButton'; // Присваиваем id
-        closeButton.textContent = "Закрыть";
+        closeButton.textContent = "Завантаження";
         closeButton.style.marginTop = '10px';
         closeButton.style.padding = '10px 20px';
         closeButton.style.fontSize = '14px';
