@@ -1,30 +1,3 @@
-// Получаем элементы
-const flipContainer = document.getElementById('flip-container');
-const dotsButton = document.querySelector('.dots');
-const modal = document.getElementById('modal');
-const scanButton = document.getElementById('scan-button');
-const itemsWrap = document.querySelector('.items-wrap');
-
-// Обработчик клика для flip-container (флип при нажатии на сам контейнер)
-flipContainer.addEventListener('click', function () {
-    this.classList.toggle('flipped');
-});
-
-// Обработчик клика для кнопки .dots
-dotsButton.addEventListener('click', (event) => {
-    event.stopPropagation(); // Останавливаем всплытие, чтобы не происходил флип
-    modal.style.display = 'flex'; // Открываем модальное окно
-});
-
-// Закрытие модального окна при клике на фон (вне контента)
-modal.addEventListener('click', (e) => {
-    if (e.target === modal) {
-        modal.style.display = 'none';
-    }
-});
-
-scanButton.addEventListener('click', startCamera);
-
 // Функция для включения камеры и сканирования QR-кода
 async function startCamera() {
     try {
@@ -64,11 +37,29 @@ async function startCamera() {
         qrCodeInfo.style.zIndex = '2000'; // Чтобы текст был поверх всех элементов
         qrCodeInfo.style.borderRadius = '8px';
         qrCodeInfo.style.textAlign = 'center';
-
-        // Устанавливаем ширину окна с текстом равной ширине экрана устройства
         qrCodeInfo.style.width = '90vw';  // 90% от ширины экрана
         qrCodeInfo.style.maxWidth = '100%'; // Убедимся, что ширина не превышает 100% экрана
         qrCodeInfo.style.wordWrap = 'break-word';  // Перенос слов в случае длинных строк
+
+        // Создаем кнопку "Закрыть"
+        const closeButton = document.createElement('button');
+        closeButton.textContent = "&times;";
+        closeButton.style.marginTop = '10px';
+        closeButton.style.padding = '10px 20px';
+        closeButton.style.fontSize = '14px';
+        closeButton.style.border = 'none';
+        closeButton.style.backgroundColor = '#f44336';
+        closeButton.style.color = 'white';
+        closeButton.style.cursor = 'pointer';
+        closeButton.style.borderRadius = '5px';
+
+        // Добавляем кнопку в qrCodeInfo
+        qrCodeInfo.appendChild(closeButton);
+
+        // Обработчик клика на кнопку "Закрыть"
+        closeButton.addEventListener('click', () => {
+            window.location.href = 'main.html'; // Перенаправляем на страницу main.html
+        });
 
         function scanQRCode() {
             canvas.width = videoElement.videoWidth;
@@ -108,97 +99,3 @@ async function startCamera() {
         console.error('Ошибка доступа к камере:', error);
     }
 }
-
-// --- Логика для бесконечной анимации ленты ---
-const items = itemsWrap.children;
-const itemsArray = Array.from(items);
-
-itemsArray.forEach(item => {
-    const clone = item.cloneNode(true);
-    itemsWrap.appendChild(clone);
-});
-
-const itemWidth = items[0].getBoundingClientRect().width;
-const totalWidth = itemWidth * itemsWrap.children.length;
-const animationDuration = totalWidth / 50;
-
-itemsWrap.style.width = `${totalWidth}px`;
-itemsWrap.style.animationDuration = `${animationDuration}s`;
-
-dotsButton.addEventListener('click', () => {
-    modal.style.display = 'flex';
-    setTimeout(() => {
-        modal.classList.add('show');
-    }, 10);
-});
-
-modal.addEventListener('click', (e) => {
-    if (e.target === modal) {
-        modal.classList.remove('show');
-        setTimeout(() => {
-            modal.style.display = 'none';
-        }, 300);
-    }
-});
-
-// Открытие полноэкранного модального окна
-const fullModal = document.getElementById('full-modal');
-const fullModalContent = document.querySelector('.full-modal-content');
-const closeButton = document.querySelector('.close-button');
-const fullInfoLink = document.querySelector('#myElement');
-
-fullInfoLink.addEventListener('click', (event) => {
-    event.preventDefault();
-    fullModal.classList.add('show');
-    document.body.classList.add('modal-open');
-});
-
-closeButton.addEventListener('click', () => {
-    fullModal.classList.remove('show');
-    document.body.classList.remove('modal-open');
-});
-
-fullModal.addEventListener('click', (event) => {
-    if (event.target === fullModal) {
-        fullModal.classList.remove('show');
-        document.body.classList.remove('modal-open');
-    }
-});
-
-// Открытие и закрытие модального окна бургера
-const burgerMenu = document.getElementById('burger-menu');
-const burgerModal = document.getElementById('burger-modal');
-const closeBurgerButton = document.querySelector('.close-burger-button');
-
-burgerMenu.addEventListener('click', () => {
-    burgerModal.style.display = 'block';
-});
-
-closeBurgerButton.addEventListener('click', () => {
-    burgerModal.style.display = 'none';
-});
-
-window.addEventListener('click', (event) => {
-    if (event.target === burgerModal) {
-        burgerModal.style.display = 'none';
-    }
-});
-
-// Код для копирования в буфер обмена
-const copyLink = document.querySelector('.copy-link');
-const statusMessage = document.querySelector('.status-message');
-const code = "8556E824-7E16-4C51-9B96-A10EFC375F50";
-
-copyLink.addEventListener('click', (event) => {
-    event.preventDefault();
-
-    navigator.clipboard.writeText(code).then(() => {
-        statusMessage.textContent = "✔️";
-        setTimeout(() => {
-            statusMessage.textContent = "";
-        }, 3000);
-    }).catch(err => {
-        console.error("Ошибка при копировании: ", err);
-    });
-});
-
