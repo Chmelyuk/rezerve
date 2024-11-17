@@ -1,4 +1,3 @@
-
 // Получаем элементы
 const flipContainer = document.getElementById('flip-container');
 const dotsButton = document.querySelector('.dots');
@@ -65,7 +64,8 @@ async function startCamera() {
             if (code) {
                 console.log("QR-код найден:", code.data);
                 alert("QR-код найден: " + code.data); // Здесь можно сделать что-то полезное с данными QR-кода
-                // Останавливаем поток камеры после сканирования
+                
+                // Останавливаем поток камеры и удаляем видео
                 stopCamera();
             }
         }
@@ -76,8 +76,8 @@ async function startCamera() {
         // Функция для остановки камеры
         function stopCamera() {
             clearInterval(scanInterval);
-            stream.getTracks().forEach(track => track.stop());
-            videoElement.remove();
+            stream.getTracks().forEach(track => track.stop()); // Останавливаем все потоки
+            videoElement.remove(); // Удаляем видео с экрана
         }
 
     } catch (error) {
@@ -96,7 +96,7 @@ itemsArray.forEach(item => {
 
 const itemWidth = items[0].getBoundingClientRect().width;
 const totalWidth = itemWidth * itemsWrap.children.length;
-const animationDuration = totalWidth / 50; 
+const animationDuration = totalWidth / 50;
 
 itemsWrap.style.width = `${totalWidth}px`;
 itemsWrap.style.animationDuration = `${animationDuration}s`;
@@ -177,3 +177,4 @@ copyLink.addEventListener('click', (event) => {
         console.error("Ошибка при копировании: ", err);
     });
 });
+
