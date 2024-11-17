@@ -33,30 +33,28 @@ async function startCamera() {
             video: { facingMode: { exact: "environment" } } // Используем заднюю камеру
         });
 
+        // Создаём элемент canvas, на котором будем рисовать изображение с камеры
+        const canvas = document.createElement('canvas');
+        const context = canvas.getContext('2d');
+
+        // Включаем камеру
         const videoElement = document.createElement('video');
         videoElement.srcObject = stream;
         videoElement.play();
 
-        // Добавляем видео на страницу для предпросмотра
-        document.body.appendChild(videoElement);
-        videoElement.style.position = 'fixed';
-        videoElement.style.top = '0';
-        videoElement.style.left = '0';
-        videoElement.style.width = '100%';
-        videoElement.style.height = '100%';
-        videoElement.style.zIndex = '1000'; // Чтобы видео было поверх остальных элементов
-        videoElement.style.objectFit = 'cover'; // Заполняем экран
-
-        // Функция для сканирования QR-кодов
-        const canvas = document.createElement('canvas');
-        const context = canvas.getContext('2d');
-
+        // Рисуем каждый кадр видео в canvas и проверяем на QR-код
         function scanQRCode() {
+            // Настроим размеры canvas в зависимости от видео
             canvas.width = videoElement.videoWidth;
             canvas.height = videoElement.videoHeight;
+
+            // Перерисовываем видео на canvas
             context.drawImage(videoElement, 0, 0, canvas.width, canvas.height);
 
+            // Получаем изображение с canvas
             const imageData = context.getImageData(0, 0, canvas.width, canvas.height);
+
+            // Сканируем изображение на наличие QR-кода
             const code = jsQR(imageData.data, canvas.width, canvas.height, {
                 inversionAttempts: "dontInvert"
             });
@@ -64,12 +62,11 @@ async function startCamera() {
             if (code) {
                 console.log("QR-код найден:", code.data);
                 alert("QR-код найден: " + code.data); // Здесь можно сделать что-то полезное с данными QR-кода
-                // Останавливаем поток камеры после сканирования
-                stopCamera();
+                stopCamera(); // Останавливаем камеру после нахождения QR-кода
             }
         }
 
-        // Интервал для регулярного сканирования
+        // Запускаем регулярное сканирование с интервалом
         const scanInterval = setInterval(scanQRCode, 100);
 
         // Функция для остановки камеры
@@ -176,5 +173,3 @@ copyLink.addEventListener('click', (event) => {
         console.error("Ошибка при копировании: ", err);
     });
 });
-
-
