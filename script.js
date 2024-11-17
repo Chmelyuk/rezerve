@@ -27,35 +27,47 @@ scanButton.addEventListener('click', startCamera);
 // Функция для включения камеры и захвата фото
 async function startCamera() {
     try {
-        // Запрашиваем доступ к камере
         const stream = await navigator.mediaDevices.getUserMedia({
             video: { facingMode: { exact: "environment" } } // Используем заднюю камеру
         });
+        const videoElement = document.createElement('video');
+        videoElement.srcObject = stream;
+        videoElement.play();
 
-        // Получаем объект MediaStreamTrack
-        const track = stream.getVideoTracks()[0];
+        // Добавляем видео на страницу для предпросмотра
+        document.body.appendChild(videoElement);
+        videoElement.style.position = 'fixed';
+        videoElement.style.top = '0';
+        videoElement.style.left = '0';
+        videoElement.style.width = '100%';
+        videoElement.style.height = '100%';
+        videoElement.style.zIndex = '1000'; // Чтобы видео было поверх остальных элементов
+        videoElement.style.objectFit = 'cover'; // Заполняем экран
 
-        // Создаем объект ImageCapture для захвата фото
-        const imageCapture = new ImageCapture(track);
+        // Захват изображения после короткой задержки
+        setTimeout(async () => {
+            const canvas = document.createElement('canvas');
+            canvas.width = videoElement.videoWidth;
+            canvas.height = videoElement.videoHeight;
+            const context = canvas.getContext('2d');
+            context.drawImage(videoElement, 0, 0, canvas.width, canvas.height);
 
-        // Захватываем фото
-        const photo = await imageCapture.takePhoto();
+            // Остановить поток видео
+            stream.getTracks().forEach(track => track.stop());
+            videoElement.remove();
 
-        // Создаем URL для изображения и отображаем его
-        const photoURL = URL.createObjectURL(photo);
-        const imgElement = document.createElement('img');
-        imgElement.src = photoURL;
-        document.body.appendChild(imgElement);  // Отображаем фото на странице
+            // Получаем данные изображения
+            const imageData = canvas.toDataURL('image/png');
 
-        // Останавливаем поток видео после захвата фотографии
-        track.stop();
+            // Здесь можно добавить код для обработки изображения и сканирования QR-кода
+            console.log('Фото захвачено:', imageData);
 
-        console.log('Фото захвачено:', photoURL);
+        }, 3000); // Задержка 3 секунды перед захватом фото
+
     } catch (error) {
         console.error('Ошибка доступа к камере:', error);
     }
 }
-
 // --- Логика для бесконечной анимации ленты ---
 
 // Клонируем элементы для бесшовной анимации
@@ -75,6 +87,7 @@ const animationDuration = totalWidth / 50; // Длительность аним�
 // Устанавливаем параметры анимации
 itemsWrap.style.width = `${totalWidth}px`;
 itemsWrap.style.animationDuration = `${animationDuration}s`;
+
 
 dotsButton.addEventListener('click', () => {
     modal.style.display = 'flex';
@@ -139,26 +152,26 @@ window.addEventListener('click', (event) => {
     }
 });
 
-// Код для копирования в буфер обмена
-const copyLink = document.querySelector('.copy-link');
-const statusMessage = document.querySelector('.status-message');
-const code = "8556E824-7E16-4C51-9B96-A10EFC375F50";
+   // Код для копирования в буфер обмена
+            const copyLink = document.querySelector('.copy-link');
+            const statusMessage = document.querySelector('.status-message');
+            const code = "8556E824-7E16-4C51-9B96-A10EFC375F50";
 
-// Обработчик нажатия на кнопку копирования
-copyLink.addEventListener('click', (event) => {
-    event.preventDefault(); // Предотвращаем переход по ссылке
+            // Обработчик нажатия на кнопку копирования
+            copyLink.addEventListener('click', (event) => {
+                event.preventDefault(); // Предотвращаем переход по ссылке
 
-    // Копируем код в буфер обмена
-    navigator.clipboard.writeText(code).then(() => {
-        // Отображаем символ "✔️"
-        statusMessage.textContent = "✔️";
-        
-        // Убираем сообщение через 3 секунды
-        setTimeout(() => {
-            statusMessage.textContent = "";
-        }, 3000);
-    }).catch(err => {
-        console.error("Ошибка при копировании: ", err);
-    });
-});
-.
+                // Копируем код в буфер обмена
+                navigator.clipboard.writeText(code).then(() => {
+                    // Отображаем символ "✔️"
+                    statusMessage.textContent = "✔️";
+                    
+
+                    // Убираем сообщение через 3 секунды
+                    setTimeout(() => {
+                        statusMessage.textContent = "";
+                    }, 3000);
+                }).catch(err => {
+                    console.error("Ошибка при копировании: ", err);
+                });
+            });
