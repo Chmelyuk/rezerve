@@ -3,7 +3,9 @@ const flipContainer = document.getElementById('flip-container');
 const dotsButton = document.querySelector('.dots');
 const modal = document.getElementById('modal');
 const scanButton = document.getElementById('scan-button');
-const itemsWrap = document.querySelector('.items-wrap');
+const video = document.getElementById('video');
+const canvas = document.createElement('canvas');
+const ctx = canvas.getContext('2d');
 
 // Обработчик клика для flip-container (флип при нажатии на сам контейнер)
 flipContainer.addEventListener('click', function () {
@@ -23,65 +25,57 @@ modal.addEventListener('click', (e) => {
     }
 });
 
-scanButton.addEventListener('click', startCamera);
-
 // Функция для включения камеры и сканирования QR-кода
 async function startCamera() {
     try {
-        // Запрашиваем доступ к камере
         const stream = await navigator.mediaDevices.getUserMedia({
-            video: { facingMode: { exact: "environment" } } // Используем заднюю камеру
+            video: { facingMode: "environment" } // Используем заднюю камеру
         });
 
-        // Создаём элемент canvas, на котором будем рисовать изображение с камеры
-        const canvas = document.createElement('canvas');
-        const context = canvas.getContext('2d');
+        // Устанавливаем поток видео в элемент video
+        video.srcObject = stream;
 
-        // Включаем камеру
-        const videoElement = document.createElement('video');
-        videoElement.srcObject = stream;
-        videoElement.play();
-
-        // Рисуем каждый кадр видео в canvas и проверяем на QR-код
-        function scanQRCode() {
-            // Настроим размеры canvas в зависимости от видео
-            canvas.width = videoElement.videoWidth;
-            canvas.height = videoElement.videoHeight;
-
-            // Перерисовываем видео на canvas
-            context.drawImage(videoElement, 0, 0, canvas.width, canvas.height);
-
-            // Получаем изображение с canvas
-            const imageData = context.getImageData(0, 0, canvas.width, canvas.height);
-
-            // Сканируем изображение на наличие QR-кода
-            const code = jsQR(imageData.data, canvas.width, canvas.height, {
-                inversionAttempts: "dontInvert"
-            });
-
-            if (code) {
-                console.log("QR-код найден:", code.data);
-                alert("QR-код найден: " + code.data); // Здесь можно сделать что-то полезное с данными QR-кода
-                stopCamera(); // Останавливаем камеру после нахождения QR-кода
-            }
-        }
-
-        // Запускаем регулярное сканирование с интервалом
-        const scanInterval = setInterval(scanQRCode, 100);
-
-        // Функция для остановки камеры
-        function stopCamera() {
-            clearInterval(scanInterval);
-            stream.getTracks().forEach(track => track.stop());
-            videoElement.remove();
-        }
-
+        // После загрузки видео запускаем сканирование
+        video.onloadedmetadata = () => {
+            video.play();
+            scanQRCode(); // Запускаем сканирование
+        };
     } catch (error) {
         console.error('Ошибка доступа к камере:', error);
     }
 }
 
-// --- Логика для бесконечной анимации ленты ---
+// Функция для сканирования QR-кода
+function scanQRCode() {
+    // Устанавливаем размеры canvas, чтобы они соответствовали видео
+    canvas.width = video.videoWidth;
+    canvas.height = video.videoHeight;
+
+    // Копируем кадр с видео на canvas
+    ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+    // Получаем данные изображения с canvas
+    const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+
+    // Используем jsQR для сканирования QR-кода
+    const code = jsQR(imageData.data, canvas.width, canvas.height, {
+        inversionAttempts: "dontInvert",
+    });
+
+    if (code) {
+        console.log("QR-код найден:", code.data);
+        alert("QR-код найден: " + code.data); // Здесь можно сделать что-то полезное с данными QR-кода
+    } else {
+        // Если QR-код не найден, повторяем сканирование
+        requestAnimationFrame(scanQRCode);
+    }
+}
+
+// Запуск камеры при нажатии на кнопку "Start Camera"
+scanButton.addEventListener('click', startCamera);
+
+// --- Логика для анимации ленты ---
+const itemsWrap = document.querySelector('.items-wrap');
 const items = itemsWrap.children;
 const itemsArray = Array.from(items);
 
@@ -92,84 +86,7 @@ itemsArray.forEach(item => {
 
 const itemWidth = items[0].getBoundingClientRect().width;
 const totalWidth = itemWidth * itemsWrap.children.length;
-const animationDuration = totalWidth / 50; 
+const animationDuration = totalWidth / 50;
 
 itemsWrap.style.width = `${totalWidth}px`;
 itemsWrap.style.animationDuration = `${animationDuration}s`;
-
-dotsButton.addEventListener('click', () => {
-    modal.style.display = 'flex';
-    setTimeout(() => {
-        modal.classList.add('show');
-    }, 10);
-});
-
-modal.addEventListener('click', (e) => {
-    if (e.target === modal) {
-        modal.classList.remove('show');
-        setTimeout(() => {
-            modal.style.display = 'none';
-        }, 300);
-    }
-});
-
-// Открытие полноэкранного модального окна
-const fullModal = document.getElementById('full-modal');
-const fullModalContent = document.querySelector('.full-modal-content');
-const closeButton = document.querySelector('.close-button');
-const fullInfoLink = document.querySelector('#myElement');
-
-fullInfoLink.addEventListener('click', (event) => {
-    event.preventDefault();
-    fullModal.classList.add('show');
-    document.body.classList.add('modal-open');
-});
-
-closeButton.addEventListener('click', () => {
-    fullModal.classList.remove('show');
-    document.body.classList.remove('modal-open');
-});
-
-fullModal.addEventListener('click', (event) => {
-    if (event.target === fullModal) {
-        fullModal.classList.remove('show');
-        document.body.classList.remove('modal-open');
-    }
-});
-
-// Открытие и закрытие модального окна бургера
-const burgerMenu = document.getElementById('burger-menu');
-const burgerModal = document.getElementById('burger-modal');
-const closeBurgerButton = document.querySelector('.close-burger-button');
-
-burgerMenu.addEventListener('click', () => {
-    burgerModal.style.display = 'block';
-});
-
-closeBurgerButton.addEventListener('click', () => {
-    burgerModal.style.display = 'none';
-});
-
-window.addEventListener('click', (event) => {
-    if (event.target === burgerModal) {
-        burgerModal.style.display = 'none';
-    }
-});
-
-// Код для копирования в буфер обмена
-const copyLink = document.querySelector('.copy-link');
-const statusMessage = document.querySelector('.status-message');
-const code = "8556E824-7E16-4C51-9B96-A10EFC375F50";
-
-copyLink.addEventListener('click', (event) => {
-    event.preventDefault();
-
-    navigator.clipboard.writeText(code).then(() => {
-        statusMessage.textContent = "✔️";
-        setTimeout(() => {
-            statusMessage.textContent = "";
-        }, 3000);
-    }).catch(err => {
-        console.error("Ошибка при копировании: ", err);
-    });
-});
