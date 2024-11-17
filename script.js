@@ -1,7 +1,3 @@
-<!-- Подключаем библиотеку jsQR -->
-<script src="https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.js"></script>
-
-<script>
 // Получаем элементы
 const flipContainer = document.getElementById('flip-container');
 const dotsButton = document.querySelector('.dots');
@@ -180,4 +176,5 @@ copyLink.addEventListener('click', (event) => {
         console.error("Ошибка при копировании: ", err);
     });
 });
-</script>
+
+
