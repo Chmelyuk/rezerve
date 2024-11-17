@@ -161,3 +161,4 @@ copyLink.addEventListener('click', (event) => {
         console.error("Ошибка при копировании: ", err);
     });
 });
+.
