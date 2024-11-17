@@ -65,7 +65,8 @@ async function startCamera() {
         qrCodeInfo.style.zIndex = '2000'; // Чтобы текст был поверх всех элементов
         qrCodeInfo.style.borderRadius = '8px';
         qrCodeInfo.style.textAlign = 'center';
-
+        qrCodeInfo.style.maxHeight = '90vh'; // 90% от высоты экрана
+        qrCodeInfo.style.overflowY = 'auto';
         // Устанавливаем ширину окна с текстом равной ширине экрана устройства
         qrCodeInfo.style.width = '90vw';  // 90% от ширины экрана
         qrCodeInfo.style.maxWidth = '100%'; // Убедимся, что ширина не превышает 100% экрана
