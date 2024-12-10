@@ -134,17 +134,19 @@ h2 {
     position: absolute;
     display: inline-flex;
     align-items: center;
-    gap: 4px;
-    top: 680px;
+    gap: 5px;
+    top: 15px;
+    left: 150px;
+    font-size: 14px;
 }
 
-.scan-button::before {
+.scan-button::after {
     content: '';
     background-image: url('qr.png');
     background-size: contain;
     background-repeat: no-repeat;
-    width: 18px;
-    height: 18px;
+    width: 30px;
+    height: 30px;
 }
 
 .status {
@@ -806,7 +808,7 @@ body.modal-open {
     cursor: pointer;
     position: absolute;
     right: 20px;
-    top: 20px;
+    top: 700px;
 }
 
 .burger-menu-list a {
@@ -887,3 +889,29 @@ body.modal-open {
  }
 
  a{color: #000;}
+
+ .links{
+    background-color: #fff;
+    height: 80px;
+    position: absolute;
+    width: 100%;
+    top: 680px;
+    display: flex;
+        justify-content: space-between;
+        /* Равномерное распределение между картинками */
+        align-items: center;
+        /* Вертикальное выравнивание */
+        width: 100%;
+        
+ }
+
+ .links img {
+     height: 60px;
+     /* Высота изображений */
+     width: 100%;
+     /* Растягиваем изображение по ширине контейнера */
+     object-fit: cover;
+     /* Картинка заполняет блок без искажений */
+    margin-right: 2%;
+        margin-left: 2%;
+ }
