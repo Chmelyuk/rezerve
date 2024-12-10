@@ -1,8 +1,8 @@
+/* Общие стили */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-
 }
 
 @font-face {
@@ -22,38 +22,28 @@ body {
     font-family: EUkraine, sans-serif;
 }
 
-
+/* Остальные стили (burger-modal, links, vac и т.д.) */
 #burger-modal {
-    
     position: fixed;
     z-index: 1000;
     top: 0;
     left: 0;
     width: 100vw;
-    /* Полная ширина экрана */
-   
-    /* Полная высота экрана */
     background-color: #e1dfcc;
-    /* Светлый фон с небольшой прозрачностью */
     overflow: hidden;
-    /* Отключаем прокрутку */
 }
 
-/* Контент внутри модального окна */
 .burger-modal-content {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100%;
-    /* Растягиваем на всю высоту */
     width: 100%;
-    /* Растягиваем на всю ширину */
     text-align: left;
     padding-left: 10px;
     padding-right: 50px;
     padding-bottom: 220px;
-
 }
 
 .burger-modal-content h2 {
@@ -63,16 +53,14 @@ body {
     font-size: 26px;
     font-weight: normal;
 }
- 
+
 .burger-modal-content hr {
     border: none;
     border-top: 1px solid #ccc;
     margin: 10px 0;
     width: 130%;
     margin-left: 20px;
-
 }
-
 
 .burger-modal-content p {
     text-align: left;
@@ -83,33 +71,26 @@ a {
     color: #000;
 }
 
- .links {
-     background-color: #fff;
-     height: 80px;
-     position: absolute;
-     width: 100%;
-      top: 720px;
-     display: flex;
-     justify-content: space-between;
-     /* Равномерное распределение между картинками */
-     align-items: center;
-     /* Вертикальное выравнивание */
+.links {
+    background-color: #fff;
+    height: 80px;
+    position: absolute;
+    width: 100%;
+    top: 700px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     z-index: 2000;
+}
 
- }
+.links img {
+    max-height: 60px;
+    object-fit: cover;
+    margin-right: 2%;
+    margin-left: 2%;
+}
 
- .links img {
-     max-height: 60px;
-     /* Высота изображений */
-
-     /* Растягиваем изображение по ширине контейнера */
-     object-fit: cover;
-     /* Картинка заполняет блок без искажений */
-     margin-right: 2%;
-     margin-left: 2%;
- }
-
- .vac{
+.vac {
     background-color: #fff;
     height: 480px;
     width: 90%;
@@ -118,58 +99,149 @@ a {
     z-index: 2000;
     margin-left: 20px;
     border-radius: 25px 25px;
- }
-.title{
+}
+
+.title {
     text-align: center;
     margin-top: 20px;
 }
- .pics img{
+
+.pics img {
     height: 350px;
     width: 90%;
-    padding:  30px;
+    padding: 30px;
     margin-left: 20px;
-    
- }
+}
 
- .thank-you-button {
-     background-color: #FF8C00;
-     border: none;
-     color: black;
-     padding: 10px 20px;
-     font-size: 16px;
-     cursor: not-allowed;
-     border-radius: 100px;
-     width: 250px;
-     height: 50px;
+.thank-you-button {
+    background-color: #FF8C00;
+    border: none;
+    color: black;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: not-allowed;
+    border-radius: 100px;
+    width: 250px;
+    height: 50px;
     position: absolute;
-     bottom: 30px;
-     left: 50%;
-     transform: translateX(-50%);
- }
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+}
 
- .search-button {
-     background-color: white;
-    
-     border-radius: 50%;
-     /* Круглая форма */
-     width: 50px;
-     /* Размер кнопки */
-     height: 50px;
-     /* Размер кнопки */
-     display: flex;
-     align-items: center;
-     justify-content: center;
-     /* Центрируем содержимое */
-     cursor: pointer;
-     /* Указатель мыши при наведении */
-     font-size: 30px;
-     /* Размер лупы */
-     
+.search-button {
+    background-color: white;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 30px;
     position: absolute;
-        top: 30px;
-        left: 300px;
-        z-index: 3000;
-     
- }
+    top: 30px;
+    left: 300px;
+    z-index: 3000;
+}
 
-   
+/* Стили для текста и линии */
+.text-container {
+    position: absolute;
+    z-index: 10000;
+    width: 100%;
+    top: 150px;
+    margin-left: 30px;
+}
+
+.text {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.text p {
+    margin-right: 15px;
+    cursor: pointer;
+    /* Указатель курсора для интерактивности */
+    color: #555555;
+    /* Изначальный цвет */
+}
+
+.text.active .for-you {
+    color: black;
+}
+
+.text.active .all-jobs {
+    color: #555555;
+}
+
+.text.reverse .for-you {
+    color: #555555;
+}
+
+.text.reverse .all-jobs {
+    color: black;
+}
+
+/* Линия под текстом */
+.text-line {
+    display: flex;
+    width: 80%;
+    height: 2px;
+    margin-top: 5px;
+}
+
+.line-left,
+.line-right {
+    flex: 1;
+    background-color: #555555;
+    /* Изначально серая */
+    transition: background-color 0.3s ease;
+}
+
+.text-container.active .line-left {
+    background-color: black;
+}
+
+.text-container.active .line-right {
+    background-color: #555555;
+}
+
+.text-container.reverse .line-left {
+    background-color: #555555;
+}
+
+.text-container.reverse .line-right {
+    background-color: black;
+}
+
+ 
+
+.text.active .for-you {
+    color: black;
+    /* Активный текст "Для вас" */
+}
+
+.text.reverse .all-jobs {
+    color: black;
+    /* Активный текст "Всі вакансії" */
+}
+
+.text-container.active .for-you {
+    color: black;
+}
+
+.text-container.active .all-jobs {
+    color: #555555;
+    /* Неактивный цвет */
+}
+
+.text-container.reverse .for-you {
+    color: #555555;
+    /* Неактивный цвет */
+}
+
+.text-container.reverse .all-jobs {
+    color: black;
+}
