@@ -890,12 +890,12 @@ body.modal-open {
 
  a{color: #000;}
 
- .links{
+.links{
     background-color: #fff;
     height: 80px;
     position: absolute;
     width: 100%;
-    top: 680px;
+    top: 700px;
     display: flex;
         justify-content: space-between;
         /* Равномерное распределение между картинками */
@@ -906,7 +906,7 @@ body.modal-open {
  }
 
  .links img {
-     height: 60px;
+     max-height: 60px;
      /* Высота изображений */
      width: 100%;
      /* Растягиваем изображение по ширине контейнера */
