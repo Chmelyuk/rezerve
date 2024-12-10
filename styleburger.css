@@ -920,7 +920,7 @@ a {
      align-items: center;
      /* Вертикальное выравнивание */
 
-
+z-index: 2000;
  }
 
  .links img {
