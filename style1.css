@@ -889,8 +889,7 @@ body.modal-open {
  }
 
  a{color: #000;}
-
-.links{
+ .links{
     background-color: #fff;
     height: 80px;
     position: absolute;
@@ -901,14 +900,14 @@ body.modal-open {
         /* Равномерное распределение между картинками */
         align-items: center;
         /* Вертикальное выравнивание */
-        width: 100%;
+        
         
  }
 
  .links img {
      max-height: 60px;
      /* Высота изображений */
-     width: 100%;
+     
      /* Растягиваем изображение по ширине контейнера */
      object-fit: cover;
      /* Картинка заполняет блок без искажений */
