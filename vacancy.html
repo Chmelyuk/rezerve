@@ -7,7 +7,6 @@
     <title>Document</title>
     <link rel="stylesheet" href="stylevac.css">
     <link rel="manifest" href="manifest.json">
-     
 </head>
 
 <body>
@@ -19,34 +18,186 @@
     <button class="search-button" aria-label="Search">
         🔍︎
     </button>
-      
-            <div id="burger-modal">
-                <div class="burger-modal-content">
-                     
-                    <h2>Вакансії в<br> Силах оборони<br>України</h2><br><br>
-            
-                     
-                </div>
-            </div>
-                <div class="vac">
-                    <div class="title"><p>На вас чекають:</p></div>
-                    <div class="pics"><img src="vacs.png" /></div>
-                    <div class="link"><a href="getting.html"><button class="thank-you-button">Подивитись вакансії</button></a></div>
-                </div>
+
+    <div id="burger-modal">
+        <div class="burger-modal-content">
+            <h2>Вакансії в<br> Силах оборони<br>України</h2><br><br>
+        </div>
+    </div>
+
+    <!-- Контейнер для текста и линии -->
+    <div class="text-container">
+        <div class="text">
+            <p class="for-you">Для вас</p>
+            <p class="all-jobs">Всі вакансії</p>
+        </div>
+        <div class="text-line">
+            <span class="line-left"></span>
+            <span class="line-right"></span>
+        </div>
+    </div>
+
+    <div class="vac" id="vac-container">
+        <div class="title">
+            <p>На вас чекають:</p>
+        </div>
+        <div class="pics"><img src="vacs.png" alt="Vacs" /></div>
+        <div class="link"><a href="getting.html"><button class="thank-you-button">Подивитись вакансії</button></a></div>
+    </div>
 
     <div class="links">
         <a href="">
-            <img src="cutted/vac_black.png" />
+            <img src="cutted/vac_black.png" alt="Vac" />
         </a>
         <a href="main.html">
-            <img src="cutted/my_doc.png" />
+            <img src="cutted/my_doc.png" alt="My Doc" />
         </a>
         <a href="#">
-            <img src="cutted/menu.png" />
+            <img src="cutted/menu.png" alt="Menu" />
         </a>
     </div>
 
-    
+    <script>
+      // Сохраняем первоначальное содержимое
+        const initialContent = `
+            <div class="title">
+                <p>На вас чекають:</p>
+            </div>
+            <div class="pics">
+                <img src="vacs.png" alt="Vacs" />
+            </div>
+            <div class="link">
+                <a href="getting.html">
+                    <button class="thank-you-button">Подивитись вакансії</button>
+                </a>
+            </div>
+        `;
+
+        // Новое содержимое
+        const newContent = `
+            <div class="info" onclick="window.location.href='getnot.html'">
+                <div class="block-info">
+                    <p>Дані з реєстру Оберіг отримано</p>
+                    <p>Військово-обліковий документ<br>вже доступний</p>
+                    <hr>
+                    <span>19.10.2024 о 16:34</span>
+                </div>
+            </div>
+            <div class="info1" onclick="window.location.href='sendnot.html'">
+                <div class="block-info1">
+                    <p>Запит на інформацію з реєстру<br>відправлено</p>
+                    <p>Очікуйте сповіщення про результат<br>обробки запиту</p>
+                    <hr>
+                    <span>19.10.2024 о 16:34</span>
+                </div>
+            </div>
+            <div class="info" onclick="window.location.href='getnot.html'">
+                <div class="block-info">
+                    <p>Дані з реєстру Оберіг отримано</p>
+                    <p>Військово-обліковий документ<br>вже доступний</p>
+                    <hr>
+                    <span>12.10.2024 о 11:15</span>
+                </div>
+            </div>
+            <div class="info1" onclick="window.location.href='sendnot.html'">
+                <div class="block-info1">
+                    <p>Запит на інформацію з реєстру<br>відправлено</p>
+                    <p>Очікуйте сповіщення про результат<br>обробки запиту</p>
+                    <hr>
+                    <span>12.10.2024 о 11:14</span>
+                </div>
+            </div>
+            <div class="info" onclick="window.location.href='getnot.html'">
+                <div class="block-info">
+                    <p>Дані з реєстру Оберіг отримано</p>
+                    <p>Військово-обліковий документ<br>вже доступний</p>
+                    <hr>
+                    <span>05.10.2024 о 09:30</span>
+                </div>
+            </div>
+            <div class="info1" onclick="window.location.href='sendnot.html'">
+                <div class="block-info1">
+                    <p>Запит на інформацію з реєстру<br>відправлено</p>
+                    <p>Очікуйте сповіщення про результат<br>обробки запиту</p>
+                    <hr>
+                    <span>05.10.2024 о 09:29</span>
+                </div>
+            </div>
+        `;
+
+        // Контейнер вакансий
+        const vacContainer = document.getElementById('vac-container');
+
+        // Переменная для отслеживания текущего состояния (true = новое содержимое, false = первоначальное)
+        let isNewContent = false;
+
+        // Функция для замены содержимого
+        function replaceVacContent(content) {
+            vacContainer.innerHTML = content;
+        }
+
+        // Получаем элементы для управления текстом и линией
+        const textContainer = document.querySelector('.text-container');
+        const forYouText = document.querySelector('.for-you');
+        const allJobsText = document.querySelector('.all-jobs');
+
+        // Обработчик свайпа
+        let swipeStartX = 0;
+        let swipeEndX = 0;
+
+        vacContainer.addEventListener('touchstart', (e) => {
+            swipeStartX = e.touches[0].clientX;
+        });
+
+        vacContainer.addEventListener('touchend', (e) => {
+            swipeEndX = e.changedTouches[0].clientX;
+            if (swipeStartX - swipeEndX > 50 && !textContainer.classList.contains('reverse')) {
+                // Свайп влево: активировать "Всі вакансії"
+                textContainer.classList.add('reverse');
+                textContainer.classList.remove('active');
+                replaceVacContent(newContent);
+                isNewContent = true;
+            } else if (swipeEndX - swipeStartX > 50 && !textContainer.classList.contains('active')) {
+                // Свайп вправо: активировать "Для вас"
+                textContainer.classList.add('active');
+                textContainer.classList.remove('reverse');
+                replaceVacContent(initialContent);
+                isNewContent = false;
+            }
+        });
+
+        // Добавляем обработчики кликов на тексты
+        forYouText.addEventListener('click', () => {
+            textContainer.classList.add('active');
+            textContainer.classList.remove('reverse');
+            replaceVacContent(initialContent);
+            isNewContent = false;
+        });
+
+        allJobsText.addEventListener('click', () => {
+            textContainer.classList.add('reverse');
+            textContainer.classList.remove('active');
+            replaceVacContent(newContent);
+            isNewContent = true;
+        });
+
+        forYouText.addEventListener('click', () => {
+                textContainer.classList.add('active');
+                textContainer.classList.remove('reverse');
+                replaceVacContent(initialContent); // Обновляем контент
+                isNewContent = false;
+            });
+
+            allJobsText.addEventListener('click', () => {
+                textContainer.classList.add('reverse');
+                textContainer.classList.remove('active');
+                replaceVacContent(newContent); // Обновляем контент
+                isNewContent = true;
+            });
+
+    </script>
+     
+
 </body>
 
 </html>
