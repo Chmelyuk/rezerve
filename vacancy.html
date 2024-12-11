@@ -24,6 +24,8 @@
         </svg>
     </button>
 
+
+
     <div id="burger-modal">
         <div class="burger-modal-content">
             <h2>Вакансії в<br> Силах оборони<br>України</h2><br><br>
@@ -41,7 +43,14 @@
             <span class="line-right"></span>
         </div>
     </div>
-
+    <div class="overlay"></div>
+<div id="search-modal" class="hidden">
+    <div class="search-modal-content">
+        <div class="drag-indicator"></div>
+        <input type="text" placeholder="Пошук вакансії..." class="search-input">
+        
+    </div>
+</div>
     <div class="vac" id="vac-container">
         <div class="title">
             <p>На вас чекають:</p>
@@ -244,6 +253,71 @@
                 replaceVacContent(newContent); // Обновляем контент
                 isNewContent = true;
             });
+    const searchButton = document.querySelector('.search-button');
+        const searchModal = document.getElementById('search-modal');
+        const dragIndicator = document.querySelector('.drag-indicator');
+
+        // Открытие модального окна
+        searchButton.addEventListener('click', () => {
+            searchModal.classList.remove('hidden'); // Показываем модальное окно
+        });
+
+        // Обработчики для закрытия модального окна потянув вниз
+        let startY = 0;
+        let currentY = 0;
+
+        dragIndicator.addEventListener('touchstart', (e) => {
+            startY = e.touches[0].clientY;
+        });
+
+        dragIndicator.addEventListener('touchmove', (e) => {
+            currentY = e.touches[0].clientY;
+            const offset = currentY - startY;
+            if (offset > 0) {
+                searchModal.style.transform = `translateY(${offset}px)`;
+            }
+        });
+
+        dragIndicator.addEventListener('touchend', () => {
+            const offset = currentY - startY;
+            if (offset > 100) {
+                searchModal.style.transform = '';
+                searchModal.classList.add('hidden'); // Скрываем модальное окно
+            } else {
+                searchModal.style.transform = '';
+            }
+        });
+
+      
+
+            searchButton.addEventListener('click', () => {
+                searchModal.classList.add('active'); // Показываем модальное окно
+            });
+          
+  
+
+     
+
+        dragIndicator.addEventListener('touchend', () => {
+            const offset = currentY - startY;
+            if (offset > 100) {
+                searchModal.classList.remove('active'); // Скрываем окно
+            }
+        });
+     
+    const overlay = document.querySelector('.overlay');
+
+    // Открытие модального окна
+    searchButton.addEventListener('click', () => {
+        searchModal.classList.add('active'); // Показываем модальное окно
+        overlay.classList.add('active'); // Делаем фон полупрозрачным
+    });
+
+    // Закрытие модального окна при клике на фон
+    overlay.addEventListener('click', () => {
+        searchModal.classList.remove('active'); // Скрываем модальное окно
+        overlay.classList.remove('active'); // Убираем полупрозрачный фон
+    });
 
     </script>
      
