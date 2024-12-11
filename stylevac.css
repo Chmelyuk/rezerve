@@ -302,7 +302,7 @@ background-color: #fff;
     left: 0;
     width: 100%;
     height: 90%;
-    background-color: #959485;
+    background-color: #e1dfcc;
     z-index: 4000;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
     display: flex;
@@ -340,13 +340,15 @@ background-color: #fff;
 
 /* Индикатор шторки */
 .drag-indicator {
-    width: 50px;
+    width: 70px;
     height: 5px;
     background-color: #131212;
     border-radius: 2.5px;
     margin: 10px 0;
     cursor: grab;
     margin-left: 40%;
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
 overlay {
@@ -370,4 +372,49 @@ overlay {
     /* Полупрозрачный фон */
     visibility: visible;
     /* Сделать видимым */
+}
+
+/* Стили для фона */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0);
+    /* Изначально прозрачный */
+    z-index: 3000;
+    /* Позади модального окна */
+    transition: background-color 0.3s ease;
+    /* Плавное изменение прозрачности */
+    visibility: hidden;
+    /* Не виден, пока окно не откроется */
+}
+
+/* Модальное окно */
+#search-modal {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 90%;
+     
+    z-index: 4000;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    border-radius: 25px 25px 0 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    transform: translateY(100%);
+    opacity: 0;
+    visibility: hidden;
+}
+
+/* При активной модалке */
+#search-modal.active {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
 }
