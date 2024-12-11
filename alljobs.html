@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Document</title>
+    <link rel="stylesheet" href="stylealljobs.css">
+    <link rel="manifest" href="manifest.json">
+</head>
+
+<body>
+    <div class="header-container">
+        <a href="vacancy.html" class="back-button">&#8592;</a>
+    </div>
+
+    <div class="blocks">
+        <div class="info" id="info1"  data-url="vacancy1.html">
+            <div class="block-info">
+                <strong class="space"> </strong>
+                <h2>Майстер взводу БпАК</h2>
+                <p>80 окрема десантно-штурмова<br>Галицька бригада</p>
+
+                <div class="tegs">
+                    <p><span>ДШВ</span> <span>БПЛА</span> <span>РЕМОНТ</span> <span>РЯДОВІ</span><br></p>
+                    <p><span>ПЕРЕВЕДЕННЯ</span> <span>ЧАСТКОВА ПРИДАТНІСТЬ</span></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="info" id="info2"  data-url="vacancy2.html">
+            <div class="block-info1">
+                <strong class="space1"> </strong>
+                <h2>Пілот FPV-дрону</h2>
+                <p>12 бригада спеціального<br> призначення "Азов" імені Дмитра<br> Вишневецьгого</p>
+
+                <div class="tegs">
+                    <p><span>НГУ</span> <span>БПЛА</span> <span>РЕМОНТ</span> <span>ОФІЦЕРСЬКІ</span><br></p>
+                    <p><span>ПЕРЕВЕДЕННЯ</span> <span>СЕРЖАНТСЬКІ</span></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="info" id="info3"  data-url="vacancy3.html">
+            <div class="block-info2">
+                <strong class="space2"> </strong>
+                <h2>Водій категорій С\СЕ</h2>
+                <p>Національна Гвардія України</p>
+
+                <div class="tegs">
+                    <p><span>НГУ</span> <span>ТРАНСПОРТ</span> <span>РЕМОНТ</span> <span>ОФІЦЕРСЬКІ</span><br></p>
+                    <p><span>ПЕРЕВЕДЕННЯ</span> <span>СЕРЖАНТСЬКІ</span></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="info" id="info4"  data-url="vacancy4.html">
+            <div class="block-info3">
+                <strong class="space3"> </strong>
+                <h2>Командир взводу БПЛА</h2>
+                <p>143 окрема піхотна бригада</p>
+
+                <div class="tegs">
+                    <p><span>СУХОПУТНІВІЙСЬКА</span> <span>БПЛА</span> <span>ОФІЦЕРСЬКІ</span><br></p>
+                    <p><span>КОМАНДУВАННЯ</span> <span>СЕРЖАНТСЬКІ</span></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="info" id="info5"  data-url="vacancy5.html">
+            <div class="block-info4">
+                <strong class="space4"> </strong>
+                <h2>Майстер-технік БПЛА</h2>
+                <p>24 окрема механізована<br> бригада імені Данила<br> Галицького</p>
+
+                <div class="tegs">
+                    <p><span>СУХОПУТНІВІЙСЬКА</span> <span>БПЛА</span> <span>ОФІЦЕРСЬКІ</span><br></p>
+                    <p><span>ПЕРЕВЕДЕННЯ</span> <span>СЕРЖАНТСЬКІ</span> <span>РЕМОНТ</span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="buttons">
+        <button id="prevBtn" onclick="showPrev()">
+            <!-- SVG для минуса -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                <rect x="4" y="11" width="16" height="2" fill="black" />
+            </svg>
+        </button>
+        <button class="about" onclick="window.location.href='getnot.html'">Про вакансію</button>
+        <button id="nextBtn" onclick="showNext()">
+            <!-- SVG для плюса -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                <rect x="4" y="11" width="16" height="2" fill="black" />
+                <rect x="11" y="4" width="2" height="16" fill="black" />
+            </svg>
+        </button>
+    </div>
+
+    <script>
+        let currentIndex = 0;
+        const infos = document.querySelectorAll('.info');
+        const vacancyButton = document.querySelector('.about');
+
+        // Функция для скрытия всех контейнеров
+        function hideAll() {
+            infos.forEach(info => info.style.display = 'none');
+        }
+
+        // Функция для показа следующего контейнера
+        function showNext() {
+            hideAll();
+            currentIndex = (currentIndex + 1) % infos.length;  // Если достигнут последний контейнер, показать первый
+            infos[currentIndex].style.display = 'block';
+            updateVacancyLink();  // Обновляем ссылку на кнопке
+        }
+
+        // Функция для показа предыдущего контейнера
+        function showPrev() {
+            hideAll();
+            currentIndex = (currentIndex - 1 + infos.length) % infos.length;  // Если достигнут первый контейнер, показать последний
+            infos[currentIndex].style.display = 'block';
+            updateVacancyLink();  // Обновляем ссылку на кнопке
+        }
+
+        // Функция для обновления ссылки на кнопке
+        function updateVacancyLink() {
+            const currentInfo = infos[currentIndex];
+            const url = currentInfo.getAttribute('data-url');
+            vacancyButton.setAttribute('onclick', `window.location.href='${url}'`);
+        }
+
+        // Изначально показываем первый контейнер и обновляем ссылку
+        showNext();
+    </script>
+
+</body>
+
+</html>

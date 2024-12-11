@@ -1,0 +1,356 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: EUkraine;
+    src: url('app/fonts/E-Ukraine-Regular.woff2') format('woff2'),
+        url('app/fonts/E-Ukraine-Regular.woff') format('woff'),
+        url('e-Ukraine-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    background-color: #e1dfcc;
+    font-family: EUkraine, sans-serif;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow-y: auto;
+    margin: 0;
+}
+
+h2 {
+    margin: 0;
+    font-size: 24px;
+    color: black;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+.header-container {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    background-color: #e1dfcc;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+.back-button {
+    font-size: 24px;
+    margin-right: 15px;
+}
+
+.blocks {
+    padding: 20px;
+}
+
+span {
+    color: black;
+    background-color: gray;
+    border-radius:  5px  5px;
+    padding: 3px;
+     
+}
+
+.info,
+.info1,
+.info2,
+.info3,
+.info4    {
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    padding: 20px;
+    width: 350px;
+    transition: opacity 0.3s;
+    /* Плавный переход прозрачности */
+}
+
+/* Полупрозрачность при нажатии */
+.info:hover,
+.info1:hover {
+    opacity: 0.7;
+}
+
+.info p,
+.info1 p,
+.info2 p,
+.info3 p,
+.info4 p{
+    margin: 5px 0;
+    padding-bottom: 15px;
+}
+
+ 
+.info,
+.info1 {
+    cursor: pointer;
+    /* Курсор указывает на клик, как при нажатии на ссылку */
+}
+
+.info:hover,
+.info1:hover {
+    background-color: #f0f0f0;
+    /* Подсветка при наведении */
+}
+
+.block-info h2{
+    font-size: 20px;
+
+}
+.block-info p ,
+.block-info1  p,
+.block-info2  p,
+.block-info3  p,
+.block-info4  p{
+    
+    margin-top: 20px;;
+    
+
+}
+.block-info .space {
+    display: inline-block;
+    /* Это важно для того, чтобы элемент занимал пространство */
+    width: 70px;
+        /* Устанавливаем размеры для псевдоэлемента */
+        height: 70px;
+    /* Размер самого элемента */
+    margin-right: 10px;
+    /* Отступ */
+     
+    /* Временный фон для отладки */
+}
+
+.block-info .space::before {
+    content: '';
+    background-image: url('icons/1.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 100%;
+    /* Устанавливаем размеры для псевдоэлемента */
+    height: 100%;
+    display: block;
+    /* Обеспечиваем, что псевдоэлемент будет отображаться как блочный элемент */
+    background-color: transparent;
+        border: none;
+    border-radius: none;
+    /* Временный фон для отладки */
+}
+
+.tegs p{
+    margin-top: 5px;
+    font-size: 12px;
+    margin-right: 1px;
+}
+
+
+
+.block-info1 .space1,
+.block-info2 .space2,
+.block-info3 .space3,
+.block-info4 .space4
+ {
+    display: inline-block;
+    /* Это важно для того, чтобы элемент занимал пространство */
+    width: 70px;
+    /* Устанавливаем размеры для псевдоэлемента */
+    height: 70px;
+    /* Размер самого элемента */
+    margin-right: 10px;
+    /* Отступ */
+
+    /* Временный фон для отладки */
+}
+
+.block-info1 .space1::before {
+    content: '';
+    background-image: url('icons/2.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 100%;
+    /* Устанавливаем размеры для псевдоэлемента */
+    height: 100%;
+    display: block;
+    /* Обеспечиваем, что псевдоэлемент будет отображаться как блочный элемент */
+ 
+    /* Временный фон для отладки */
+}
+ 
+
+.block-info2 .space2::before {
+    content: '';
+    background-image: url('icons/3.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 100%;
+    /* Устанавливаем размеры для псевдоэлемента */
+    height: 100%;
+    display: block;
+    /* Обеспечиваем, что псевдоэлемент будет отображаться как блочный элемент */
+    background-color: #fff;
+    border: none;
+    border-radius: none;
+    /* Временный фон для отладки */
+}
+.block-info3 .space3::before {
+    content: '';
+    background-image: url('icons/4.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 100%;
+    /* Устанавливаем размеры для псевдоэлемента */
+    height: 100%;
+    display: block;
+    /* Обеспечиваем, что псевдоэлемент будет отображаться как блочный элемент */
+    background-color: #fff;
+    border: none;
+    border-radius: none;
+    /* Временный фон для отладки */
+}
+
+.block-info4 .space4::before {
+    content: '';
+    background-image: url('icons/5.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 100%;
+    /* Устанавливаем размеры для псевдоэлемента */
+    height: 100%;
+    display: block;
+    /* Обеспечиваем, что псевдоэлемент будет отображаться как блочный элемент */
+    background-color: #fff;
+    border: none;
+    border-radius: none;
+    /* Временный фон для отладки */
+}
+
+.buttons {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+    /* Центрируем кнопки по горизонтали */
+    align-items: center;
+    /* Центрируем кнопки по вертикали */
+    gap: 10px;
+    /* Расстояние между кнопками */
+}
+
+.buttons button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #FF8C00;
+    color: black;
+    border: none;
+    border-radius: 50%;
+    transition: background-color 0.3s;
+    width: 60px;
+    height: 60px;
+    /* Убедитесь, что кнопки квадратные */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.buttons button:active {
+    background-color: #000000;
+}
+
+.buttons .about {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #000000;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    transition: background-color 0.3s;
+    margin: 10px;
+    width: 140px;
+    height: 60px;
+    /* Подаем фиксированную высоту для выравнивания */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* Общее для всех блоков информации */
+.info,
+.info1,
+.info2,
+.info3,
+.info4 {
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    padding: 20px;
+    width: 350px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    /* Плавные изменения */
+    position: relative;
+}
+
+/* Эффект стопки бумаги */
+.info:nth-child(1) {
+    transform: translateY(0);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    /* Тень для первого элемента */
+}
+
+.info:nth-child(2) {
+    transform: translateY(10px);
+    /* Смещаем второй элемент вниз */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    /* Более выраженная тень */
+}
+
+.info:nth-child(3) {
+    transform: translateY(20px);
+    /* Смещаем третий элемент вниз */
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+    /* Еще более выраженная тень */
+}
+
+.info:nth-child(4) {
+    transform: translateY(30px);
+    /* Смещаем четвертый элемент вниз */
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.4);
+    /* Еще более выраженная тень */
+}
+
+ 
+ 
+.info,
+.info1,
+.info2,
+.info3,
+.info4 {
+    opacity: 0;
+    animation: fadeIn 1s forwards;
+    /* Появление блоков */
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
