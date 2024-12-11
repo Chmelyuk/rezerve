@@ -296,7 +296,7 @@ a {
     text-align: center;
     z-index: 2000;
     position: fixed;
-        top: 550px;
+        top: 480px;
         left: 2,5%;
         transform: translateY(100%);
             transition: transform 0.3s ease-out;
