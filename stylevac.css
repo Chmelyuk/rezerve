@@ -70,33 +70,28 @@ body {
 a {
     color: #000;
 }
+
 .links {
-     background-color: #fff;
-     height: 80px;
-     position: absolute;
-     width: 100%;
-     top: 720px;
-     display: flex;
-     justify-content: space-between;
-     /* Равномерное распределение между картинками */
-     align-items: center;
+    background-color: #fff;
+    height: 80px;
+    position: absolute;
+    width: 100%;
+    top: 720px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     z-index: 2000;
-     /* Вертикальное выравнивание */
+   
+}
 
-
- }
-
- .links img {
-     max-height: 60px;
-     /* Высота изображений */
-
-     /* Растягиваем изображение по ширине контейнера */
-     object-fit: cover;
-     /* Картинка заполняет блок без искажений */
-     margin-right: 2%;
-     margin-left: 2%;
- }
- 
+.links img {
+    max-height: 60px;
+    object-fit: cover;
+    margin-right: 2%;
+    margin-left: 2%;
+    
+    
+}
 
 .vac {
 background-color: #fff;
@@ -155,12 +150,13 @@ background-color: #fff;
     top: 30px;
     left: 300px;
     z-index: 3000;
+    color: black;
 }
 
 /* Стили для текста и линии */
 .text-container {
     position: absolute;
-    z-index: 10000;
+    z-index: 2000;
     width: 100%;
     top: 150px;
     margin-left: 30px;
@@ -293,4 +289,85 @@ background-color: #fff;
 
 .vac::-webkit-scrollbar-track {
     background: #ddd;
+}
+
+/* Скрытие модального окна */
+.hidden {
+    display: none;
+}
+
+#search-modal {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 90%;
+    background-color: #959485;
+    z-index: 4000;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    border-radius: 25px 25px 0 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    transform: translateY(100%);
+    opacity: 0;
+    visibility: hidden;
+
+    border: 1px solid black;
+}
+#search-modal.active {
+    transform: translateY(0);
+    /* Окно появляется снизу */
+    opacity: 1;
+    /* Окно становится видимым */
+    visibility: visible;
+    /* Сделать окно видимым */
+}
+/* Поле ввода */
+.search-input {
+    margin: 20px 0;
+    width: 90%;
+    padding: 10px;
+    font-size: 18px;
+    border: 1px solid #8e8c8c;
+    border-radius: 5px;
+    margin-right: 220px;
+    margin-left: 20px;
+
+}
+
+/* Индикатор шторки */
+.drag-indicator {
+    width: 50px;
+    height: 5px;
+    background-color: #131212;
+    border-radius: 2.5px;
+    margin: 10px 0;
+    cursor: grab;
+    margin-left: 40%;
+}
+
+overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0);
+    /* Изначально прозрачный */
+    z-index: 3000;
+    /* Позади модального окна */
+    transition: background-color 0.3s ease;
+    /* Плавное изменение прозрачности */
+    visibility: hidden;
+    /* Не виден, пока окно не откроется */
+}
+
+.overlay.active {
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Полупрозрачный фон */
+    visibility: visible;
+    /* Сделать видимым */
 }
