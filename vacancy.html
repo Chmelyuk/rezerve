@@ -318,7 +318,13 @@
         searchModal.classList.remove('active'); // Скрываем модальное окно
         overlay.classList.remove('active'); // Убираем полупрозрачный фон
     });
-
+    overlay.addEventListener('click', (event) => {
+        // Проверка, что клик был именно по фону, а не по модальному окну
+        if (event.target === overlay) {
+            searchModal.classList.remove('active'); // Скрываем модальное окно
+            overlay.classList.remove('active'); // Убираем полупрозрачный фон
+        }
+    });
     </script>
      
 
