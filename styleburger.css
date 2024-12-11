@@ -912,15 +912,15 @@ a {
      background-color: #fff;
      height: 80px;
      position: absolute;
-     width: 100%;
+    width: 390px;
      top: 720px;
      display: flex;
      justify-content: space-between;
      /* Равномерное распределение между картинками */
      align-items: center;
      /* Вертикальное выравнивание */
+    z-index: 2000;
 
-z-index: 2000;
  }
 
  .links img {
@@ -930,6 +930,23 @@ z-index: 2000;
      /* Растягиваем изображение по ширине контейнера */
      object-fit: cover;
      /* Картинка заполняет блок без искажений */
-     margin-right: 2%;
-     margin-left: 2%;
+ 
  }
+
+ .links .vac {
+    position: absolute;
+        top: 10px;
+        left: 22px;
+    }
+    
+    .links .my_doc {
+        position: absolute;
+        top: 10px;
+        left: 142px;
+    }
+    
+    .links .menubold {
+        position: absolute;
+        top: 10px;
+        right: 22px;
+    }
