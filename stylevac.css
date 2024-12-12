@@ -270,7 +270,9 @@ background-color: #fff;
 .vac::-webkit-scrollbar-track {
     background: #ddd;
 }
-
+.vac img{
+    margin-left: 1%;
+}
 /* Скрытие модального окна */
 .hidden {
     display: none;
