@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Document</title>
+    <link rel="stylesheet" href="2.css">
+    <link rel="manifest" href="manifest.json">
+    <style>
+        .task-list {
+            margin-top: 10px;
+            list-style-type: disc;
+            padding-left: 20px;
+            display: none;
+            /* Скрываем список по умолчанию */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header-container">
+        <a href="vacancy.html" class="back-button">&#8592;</a>
+        <h2 class="header">Водій</h2>
+    </div>
+   
+ 
+    <div class="blocks">
+        <div class="info">
+            <div class="block-info">
+                <p class="logo">Школа тактичної<br>медицини</p>
+            </div>
+        </div>
+ 
+    <!-- Первый блок -->
+    <div class="info1" onclick="toggleTasks(this)">
+        <div class="block-info1">
+            <h2>Обов'язки</h2>
+            <ul class="task-list">
+                <li>Керування транспортними засобами </li>
+                <li>Ремонт та обслуговування автомобільної техніки </li>
+                <li>Утримання автомобільного транспорту в справному стані та постійній готовності </li>
+                <li>Перевезення особового складу та вантажу </li>
+               
+            </ul>
+        </div>
+    </div>
+
+    <!-- Второй блок -->
+    <div class="info1" onclick="toggleTasks(this)">
+        <div class="block-info1">
+            <h2>Вимоги</h2>
+            <ul class="task-list">
+                <li>Наявність посвідчення водія </li>
+                <li>Досвід керування транспортними засобами </li>
+                <li>Повна зайнятість </li>
+                <li>Відповідальність</li>
+                <li>Досвід військової служби буде перевагою </li>
+                 
+            </ul>
+        </div>
+    </div>
+
+    <!-- Третий блок -->
+    <div class="info1" onclick="toggleTasks(this)">
+        <div class="block-info1">
+            <h2>Умови</h2>
+            <ul class="task-list">
+                
+                    <li>Мобілізація до кінця воєнного стану або служба за контрактом</li>
+                    <li>Можливість переведення Сил ТрО за згодою безпосереднього командира</li>
+                    <li>Безпосередня участь у звільненні окупованих територій</li>
+                 
+            </ul>
+        </div>
+    </div>
+    <div class="info1" onclick="toggleTasks(this)">
+        <div class="block-info1">
+            <h2>Опис</h2>
+            <ul class="task-list">
+                 
+                    <li>Школа тактичної медицини - це навчальний підрозділ Командування  Медичних сил ЗСУ.</li>
+                     
+                
+            </ul>
+        </div>
+    </div>
+    <div class="footer">
+    <div class="button"><a href="warn.html"> <button class="thank-you-button">Відгукнутись</button></a></div>
+    <div class="favorite" onclick="toggleFavorite(this)">
+    <svg id="favIcon" width="800" height="800" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+        onclick="toggleFav()">
+        <path id="pennant" d="M4 2H20V22L12 18L4 22V2Z" stroke="black" stroke-width="2" fill="none" />
+        <path d="M4 6H20" stroke="black" stroke-width="2" />
+    </svg>
+    </div>
+    </div>
+</div>
+
+    <script>
+        function toggleTasks(element) {
+            // Находим список внутри текущего блока
+            const taskList = element.querySelector('.task-list');
+
+            // Переключаем отображение списка
+            if (taskList.style.display === 'none' || taskList.style.display === '') {
+                taskList.style.display = 'block';
+            } else {
+                taskList.style.display = 'none';
+            }
+        }
+
+        function toggleTasks(element) {
+                // Находим список внутри текущего блока
+                const taskList = element.querySelector('.task-list');
+
+                // Переключаем отображение списка
+                if (taskList.style.display === 'none' || taskList.style.display === '') {
+                    taskList.style.display = 'block';
+                    element.classList.add('open'); // Добавляем класс для стрелки вверх
+                } else {
+                    taskList.style.display = 'none';
+                    element.classList.remove('open'); // Убираем класс для стрелки вверх
+                }
+            }
+
+             function toggleTasks(element) {
+                    // Находим список внутри текущего блока
+                    const taskList = element.querySelector('.task-list');
+
+                    // Переключаем отображение списка
+                    if (taskList.style.display === 'none' || taskList.style.display === '') {
+                        taskList.style.display = 'block';
+                        element.classList.add('open'); // Добавляем класс для изменения цвета
+                    } else {
+                        taskList.style.display = 'none';
+                        element.classList.remove('open'); // Убираем класс для изменения цвета
+                    }
+                }
+
+                 function toggleFavorite(element) {
+                        // Переключаем класс active
+                        element.classList.toggle('active');
+                    }
+
+                    function toggleFav() {
+                            const pennant = document.getElementById('pennant');
+                            const isFilled = pennant.getAttribute('fill') === 'black';
+
+                            // Переключаем заливку вымпела
+                            if (isFilled) {
+                                pennant.setAttribute('fill', 'none');
+                            } else {
+                                pennant.setAttribute('fill', 'black');
+                            }
+                        }
+    </script>
+</body>
+
+</html>
