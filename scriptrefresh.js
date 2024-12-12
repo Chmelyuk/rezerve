@@ -133,13 +133,11 @@ fullModal.addEventListener('click', (event) => {
 });
 
 // Открытие и закрытие модального окна бургера
-const burgerMenu = document.getElementById('burger-menu');
+ 
 const burgerModal = document.getElementById('burger-modal');
 const closeBurgerButton = document.querySelector('.close-burger-button');
 
-burgerMenu.addEventListener('click', () => {
-    burgerModal.style.display = 'block';
-});
+ 
 
 closeBurgerButton.addEventListener('click', () => {
     burgerModal.style.display = 'none';
@@ -210,3 +208,5 @@ document.getElementById('update-doc').addEventListener('click', (event) => {
     event.preventDefault(); // Предотвращаем переход по ссылке
     updateContent(); // Обновляем данные вручную при клике
 });
+
+
